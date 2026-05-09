@@ -2,7 +2,7 @@
   <img src="assets/logo.svg" alt="Web Rocket Accelerator" width="128" height="128" onerror="this.style.display='none'">
 </p>
 
-<h1 align="center">🚀 Web Rocket Accelerator — 网页火箭加速器 Pro</h1>
+<h1 align="center">🚀 Web Rocket Accelerator — 网页火箭加速器</h1>
 
 <p align="center">
   <a href="https://github.com/golegen/WebRocketAccelerator/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0-blue.svg?style=flat-square" alt="License"></a>
