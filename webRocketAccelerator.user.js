@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         webRocketAccelerator
 // @namespace    https://github.com/golegen/webRocketAccelerator
-// @version      5.6.1
+// @version      5.6.7
 // @author       凌泉素问
-// @description  v5.6.1 — 智能网页加速：预取·CDN镜像·GitHub加速·省流·智能缓存 | Smart web accelerator with per-page session + all-time cumulative stats
+// @description  v5.6.7 — 智能网页加速：预取·CDN镜像·GitHub加速·省流·智能缓存 | Smart web accelerator with per-page session + all-time cumulative stats
 // @match        *://*/*
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -13,6 +13,7 @@
 // @connect      cdn.bootcdn.net
 // @connect      cdn.staticfile.org
 // @connect      gh-proxy.com
+// @connect      hosts.gitcdn.top
 // @icon         data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYiIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWExYTJlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMTYyMTNlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMzQ2MCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZiIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmZiODMwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjZmY2YjM1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2U5NDU2MCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImciPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjIiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPHBhdGggZD0iTTMyIDQgQzI4IDQgMjIgMTAgMjAgMTggQzE4IDMwIDE2IDQwIDE2IDQ4IEMxNiA1MiAxOCA1NiAyMiA1OCBDMjQgNTggMzAgNTYgMzIgNTIgQzM0IDU2IDQwIDU4IDQyIDU4IEM0NiA1NiA0OCA1MiA0OCA0OCBDNDggNDAgNDYgMzAgNDQgMTggQzQyIDEwIDM2IDQgMzIgNFoiIGZpbGw9InVybCgjYikiLz4KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjI0IiByPSI0LjUiIGZpbGw9IiM2YzYzZmYiLz4KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjI0IiByPSIyLjgiIGZpbGw9IiMwMGQyZmYiLz4KICA8cGF0aCBkPSJNMjIgNDQgTDYgNTYgTDIyIDU0WiIgZmlsbD0iIzE2MjEzZSIgb3BhY2l0eT0iLjkiLz4KICA8cGF0aCBkPSJNMjIgNDYgTDggNTYgTDIyIDU1WiIgZmlsbD0iIzdiNmZhYSIgb3BhY2l0eT0iLjUiLz4KICA8cGF0aCBkPSJNNDIgNDQgTDU4IDU2IEw0MiA1NFoiIGZpbGw9IiMxNjIxM2UiIG9wYWNpdHk9Ii45Ii8+CiAgPHBhdGggZD0iTTQyIDQ2IEw1NiA1NiBMNDIgNTVaIiBmaWxsPSIjN2I2ZmFhIiBvcGFjaXR5PSIuNSIvPgogIDxlbGxpcHNlIGN4PSIzMiIgY3k9IjYyIiByeD0iNiIgcnk9IjciIGZpbGw9InVybCgjZikiIGZpbHRlcj0idXJsKCNnKSIgb3BhY2l0eT0iLjgiLz4KICA8ZWxsaXBzZSBjeD0iMzIiIGN5PSI1OCIgcng9IjMiIHJ5PSI1IiBmaWxsPSIjZmZiODMwIi8+CiAgPGxpbmUgeDE9IjI0IiB5MT0iMTYiIHgyPSIyNCIgeTI9IjIyIiBzdHJva2U9IiMwMGQyZmYiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iLjQiLz4KICA8bGluZSB4MT0iMjgiIHkxPSIxNCIgeDI9IjI4IiB5Mj0iMjAiIHN0cm9rZT0iIzAwZDJmZiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIuMzUiLz4KICA8bGluZSB4MT0iMzYiIHkxPSIxNCIgeDI9IjM2IiB5Mj0iMjAiIHN0cm9rZT0iIzAwZDJmZiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIuMzUiLz4KICA8bGluZSB4MT0iNDAiIHkxPSIxNiIgeDI9IjQwIiB5Mj0iMjIiIHN0cm9rZT0iIzAwZDJmZiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIuNCIvPgogIDxjaXJjbGUgY3g9IjEwIiBjeT0iMTIiIHI9IjEuMiIgZmlsbD0iI2ZmZDcwMCIgb3BhY2l0eT0iLjciLz4KICA8Y2lyY2xlIGN4PSI1MiIgY3k9IjgiIHI9IjEiIGZpbGw9IiNmZmQ3MDAiIG9wYWNpdHk9Ii41Ii8+CiAgPGNpcmNsZSBjeD0iNDgiIGN5PSIxOCIgcj0iMC43IiBmaWxsPSIjZmZkNzAwIiBvcGFjaXR5PSIuMzUiLz4KPC9zdmc+
 // @run-at       document-start
 // ==/UserScript==
@@ -23,7 +24,7 @@
 // ════════════════════════════════════════════
 // 1. Configuration Constants
 // ════════════════════════════════════════════
-const V = '5.6.1';
+const V = '5.6.7';
 const P = 'wra_';
 
 const C = {
@@ -37,17 +38,22 @@ const C = {
     staleTTL: 86_400_000, // 24hr — cache stale, re-accelerate
     cacheMax: 2000,       // max URL history entries
 
-    // Estimated per-resource savings (rough averages)
-    estResourceSize: { script: 120_000, style: 80_000, font: 150_000, image: 200_000, media: 2_000_000 },
-
+    // ── CDN Mirror Map — 12 overseas sources → top 8 domestic mirrors (speed-ranked via China test) ──
+    // Tested from Chinese mainland: staticfile(0.29s) > npmmirror(0.42s) > font.im(0.72s) >
+    // gh-proxy(1.16s) > gravatar.loli(1.25s) > bootcdn(1.38s) > baomitu(1.42s) > cdnjs.loli(1.59s)
     cdnMap: Object.freeze([
-        {p:'cdnjs.cloudflare.com/ajax/libs', r:['https://cdn.bootcdn.net/ajax/libs','https://cdn.jsdelivr.net/npm','https://cdn.staticfile.org']},
-        {p:'fonts.googleapis.com/css',       r:['https://fonts.font.im/css','https://fonts.loli.net/css']},
-        {p:'ajax.googleapis.com/ajax/libs',  r:['https://cdn.bootcdn.net/ajax/libs','https://cdn.staticfile.org']},
-        {p:'gravatar.com/avatar',            r:['https://gravatar.loli.net/avatar','https://cdn.sep.cc/avatar']},
-        {p:'stackpath.bootstrapcdn.com',      r:['https://cdn.jsdelivr.net/npm']},
-        {p:'cdn.jsdelivr.net',               r:['https://fastly.jsdelivr.net']},
-        {p:'unpkg.com',                       r:['https://registry.npmmirror.com','https://cdn.jsdelivr.net/npm']},
+        {p:'cdnjs.cloudflare.com/ajax/libs',  r:['https://cdn.staticfile.org/ajax/libs','https://cdn.bootcdn.net/ajax/libs','https://cdnjs.loli.net/ajax/libs']},
+        {p:'fonts.googleapis.com/css',        r:['https://fonts.font.im/css','https://fonts.loli.net/css']},
+        {p:'fonts.gstatic.com',               r:['https://fonts.font.im','https://fonts.loli.net']},
+        {p:'ajax.googleapis.com/ajax/libs',   r:['https://cdn.staticfile.org/ajax/libs','https://cdn.bootcdn.net/ajax/libs','https://lib.baomitu.com/ajax/libs']},
+        {p:'gravatar.com/avatar',             r:['https://gravatar.loli.net/avatar','https://cdn.sep.cc/avatar']},
+        {p:'stackpath.bootstrapcdn.com',       r:['https://cdn.staticfile.org','https://cdn.bootcdn.net','https://lib.baomitu.com']},
+        {p:'cdn.jsdelivr.net',                r:['https://fastly.jsdelivr.net','https://cdn.jsdelivr.net']},
+        {p:'unpkg.com',                        r:['https://registry.npmmirror.com','https://cdn.staticfile.org','https://lib.baomitu.com']},
+        {p:'code.jquery.com',                  r:['https://cdn.staticfile.org','https://cdn.bootcdn.net','https://lib.baomitu.com']},
+        {p:'maxcdn.bootstrapcdn.com',          r:['https://cdn.bootcdn.net','https://cdn.staticfile.org','https://lib.baomitu.com']},
+        {p:'use.fontawesome.com',              r:['https://cdn.staticfile.org','https://cdn.bootcdn.net']},
+        {p:'kit-free.fontawesome.com',         r:['https://cdn.staticfile.org','https://cdn.bootcdn.net']},
     ]),
 
     ghMirrors: Object.freeze([
@@ -59,16 +65,33 @@ const C = {
          r:[{u:'https://gh-proxy.com/https://github.com/$1/$2/archive/$3'}]},
         {re:/^https?:\/\/codeload\.github\.com\/(.+)$/,
          r:[{u:'https://gh-proxy.com/https://codeload.github.com/$1'}]},
-        {re:/^https?:\/\/github\.com\/(?!login|logout|signup|settings|notifications|new|organizations)([^\/]+)\/([^\/?]+)(\/.*)?$/,
-         r:[{u:'https://gh-proxy.com/https://github.com/$1/$2$3'}]},
         {re:/^https?:\/\/gist\.github\.com\/(.+)$/,
          r:[{u:'https://gh-proxy.com/https://gist.github.com/$1'}]},
     ]),
 
     preDomains: Object.freeze([
-        'https://github.com','https://api.github.com','https://raw.githubusercontent.com',
+        // GitHub ecosystem — full coverage from optimized CDN IPs
+        'https://github.com','https://api.github.com','https://gist.github.com',
+        'https://raw.githubusercontent.com','https://codeload.github.com',
+        'https://github.githubassets.com','https://central.github.com',
+        'https://avatars.githubusercontent.com','https://avatars0.githubusercontent.com',
+        'https://avatars1.githubusercontent.com','https://avatars2.githubusercontent.com',
+        'https://avatars3.githubusercontent.com','https://avatars4.githubusercontent.com',
+        'https://avatars5.githubusercontent.com',
+        'https://user-images.githubusercontent.com','https://favicons.githubusercontent.com',
+        'https://camo.githubusercontent.com','https://cloud.githubusercontent.com',
+        'https://media.githubusercontent.com','https://objects.githubusercontent.com',
+        'https://desktop.githubusercontent.com',
+        'https://github.global.ssl.fastly.net','https://github.map.fastly.net',
+        'https://pipelines.actions.githubusercontent.com',
+        'https://github-cloud.s3.amazonaws.com','https://github-com.s3.amazonaws.com',
+        'https://github-production-release-asset-2e65be.s3.amazonaws.com',
+        'https://github-production-user-asset-6210df.s3.amazonaws.com',
+        'https://github-production-repository-file-5c1aeb.s3.amazonaws.com',
+        // CDN mirrors
         'https://cdn.jsdelivr.net','https://fastly.jsdelivr.net','https://gh-proxy.com',
-        'https://cdn.bootcdn.net','https://cdn.staticfile.org',
+        'https://cdn.staticfile.org','https://cdn.bootcdn.net','https://cdnjs.loli.net',
+        'https://registry.npmmirror.com','https://lib.baomitu.com','https://fonts.font.im',
     ]),
 
     blockWords: /\b(login|logout|register|signin|signup|signout|pay|create|edit|download|reset|submit|doubleclick)\b/i,
@@ -318,7 +341,7 @@ function saveSes() { S.s('_ses', JSON.stringify(ses)); }
 // Cumulative counters — persist across all sessions
 function loadCum() {
     try { const r = S.g('_cum',''); if (r) return JSON.parse(r); } catch {}
-    return {cdn:0,gh:0,skip:0,res:0,data:0,time:0,t0:Date.now()};
+    return {cdn:0,gh:0,skip:0,res:0,ps:0,savedRes:0,lazy:0,sp:0,gh_m:0,pf_fail:0,data:0,time:0,t0:Date.now()};
 }
 function saveCum() { S.s('_cum', JSON.stringify(cum)); }
 
@@ -329,7 +352,11 @@ function stInc(k) {
     // Session counter
     if (k in ses) { ses[k]++; }
     // Cumulative counter (map session key → cumulative key)
-    const ck = k==='pf'?'pf':k==='cdn'?'cdn':k==='gh'?'gh':k==='skip'?'skip':k==='res'?'res':null;
+    const ck = {
+        'pf':'pf', 'cdn':'cdn', 'gh':'gh', 'skip':'skip', 'res':'res',
+        'ps':'ps', 'savedRes':'savedRes', 'lazy':'lazy', 'sp':'sp',
+        'gh_m':'gh_m', 'pf_fail':'pf_fail'
+    }[k] || null;
     if (ck && ck in cum) cum[ck]++;
     // Data estimate: skip=500KB, savedRes=120KB each
     if (k==='skip') cum.data += 500;
@@ -361,7 +388,9 @@ function stRpt() {
         up:Math.floor((Date.now()-ses.t0)/1000),
         // Cumulative
         cumCdn:cum.cdn, cumGh:cum.gh, cumSkip:cum.skip,
-        cumRes:cum.res, cumData:cumData.toFixed(1),
+        cumRes:cum.res, cumPs:cum.ps||0, cumSavedRes:cum.savedRes||0,
+        cumLazy:cum.lazy||0, cumSp:cum.sp||0, cumGhM:cum.gh_m||0,
+        cumData:cumData.toFixed(1),
         cumTime:(cum.time/10)|0, cumSince:Math.floor((Date.now()-cum.t0)/1000),
     };
 }
@@ -515,11 +544,60 @@ function injectPreconnect() {
     if (!document.head || document.head._wraPC) return;
     document.head._wraPC = true;
     const df = document.createDocumentFragment();
-    for (const o of C.preDomains) {
+    const domains = getEffectivePreconnectDomains();
+    for (const o of domains) {
         const pc = document.createElement('link'); pc.rel='preconnect'; pc.href=o; pc.crossOrigin='anonymous'; df.appendChild(pc);
         const dp = document.createElement('link'); dp.rel='dns-prefetch'; dp.href=o; df.appendChild(dp);
     }
     document.head.appendChild(df);
+}
+
+// ── GitHub Hosts Auto-Update ──
+// Fetches the latest GitHub subdomain list from hosts.gitcdn.top
+// Falls back to hardcoded C.preDomains if fetch fails
+const GH_HOSTS_URL = 'https://hosts.gitcdn.top/hosts.txt';
+const GH_HOSTS_TTL = 86_400_000; // 24h
+
+function getStoredGitHubDomains() {
+    try {
+        const raw = S.g('gh_domains', '');
+        const ts = S.g('gh_domains_ts', 0);
+        if (raw && ts && (Date.now() - ts) < GH_HOSTS_TTL) {
+            return JSON.parse(raw);
+        }
+    } catch {}
+    return null;
+}
+
+async function refreshGitHubDomains() {
+    try {
+        const resp = await fetch(GH_HOSTS_URL);
+        if (!resp.ok) return null;
+        const text = await resp.text();
+        const domains = text.split('\n')
+            .filter(l => l && !l.startsWith('#'))
+            .map(l => {
+                const parts = l.trim().split(/\s+/);
+                return parts.length >= 2 ? 'https://' + parts[1] : null;
+            })
+            .filter(Boolean);
+        if (domains.length > 5) {
+            S.s('gh_domains', JSON.stringify(domains));
+            S.s('gh_domains_ts', Date.now());
+            return domains;
+        }
+    } catch {}
+    return null;
+}
+
+function getEffectivePreconnectDomains() {
+    const stored = getStoredGitHubDomains();
+    if (stored && stored.length > 5) {
+        // Merge stored GitHub domains with CDN mirrors (keep CDN mirrors from hardcoded list)
+        const cdnMirrors = C.preDomains.filter(d => !d.includes('github.com') && !d.includes('githubusercontent.com') && !d.includes('fastly.net') && !d.includes('s3.amazonaws.com') && !d.includes('pipelines.actions'));
+        return [...stored, ...cdnMirrors];
+    }
+    return C.preDomains;
 }
 
 // ════════════════════════════════════════════
@@ -574,8 +652,6 @@ function prefetch(link) {
     if (done.size > 3000) { const it = done.values(); for (let i = 0; i < 1000; i++) done.delete(it.next().value); }
 
     const smartOn = S.g('smart_on', true);
-    const cdnOn = S.g('cdn_on', true);
-    const ghMirror = S.g('gh_mirror', true);
     const tier = smartOn ? cacheTier(u) : TIER.COLD;
 
     // WARM: recently visited — skip prefetch (DATA SAVED)
@@ -584,21 +660,18 @@ function prefetch(link) {
         return;
     }
 
-    // COLD/STALE: apply acceleration respecting user settings
-    const result = accelerateUrl(u, {smart: false, cdn: cdnOn, gh: ghMirror});
-    let au = result.url;
-    if (result.flags.cdn) stInc('cdn');
-    if (result.flags.gh) { stInc('gh'); stInc('gh_m'); }
-
     // Record in cache
-    registerFetch(au);
+    registerFetch(u);
 
-    const pfEl = document.createElement('link'); pfEl.rel='prefetch'; pfEl.href=au; pfEl.crossOrigin='anonymous';
+    // Prefetch the ORIGINAL URL — acceleration is only for resource tags (SCRIPT/LINK/IMG),
+    // not for navigation links. This ensures browser cache hits on actual click and
+    // preserves login sessions (no proxy redirect for page navigation).
+    const pfEl = document.createElement('link'); pfEl.rel='prefetch'; pfEl.href=u; pfEl.crossOrigin='anonymous';
     pfEl.onload = () => { stInc('ps'); pfEl.remove(); };
     pfEl.onerror = () => { stInc('pf_fail'); pfEl.remove(); };
     document.head?.appendChild(pfEl);
 
-    if (S.g('ind_on', false)) showBadge(au);
+    if (S.g('ind_on', false)) showBadge(u);
 }
 
 // ════════════════════════════════════════════
@@ -628,6 +701,7 @@ function showBadge(lastU) {
 // 14. UI — Statistics Panel
 // ════════════════════════════════════════════
 function showStats() {
+    try {
     const r = stRpt();
     const fmt = ss => { const h=Math.floor(ss/3600),m=Math.floor(ss%3600/60),s=ss%60; return h?h+'h '+m+'m '+s+'s':m?m+'m '+s+'s':s+'s'; };
 
@@ -636,7 +710,6 @@ function showStats() {
     const rw = (en, zh, val, unit, cls='') =>
         `<div class="wra-r"><div class="wra-r-l"><span class="wra-r-en">${en}</span><span class="wra-r-zh">${zh}</span></div><span class="wra-r-v ${cls}">${val}${unit||''}</span></div>`;
 
-    // ── Session section: what happened THIS page load ──
     const sesCards = `<div class="wra-hdr"><span class="wra-hdr-en">📌 Current Page Session</span><span class="wra-hdr-zh">本页会话统计</span></div><div class="wra-cols">` +
         c0('⚡','Performance','预取性能',
             rw('Attempts','尝试次数',r.pf,'','c-n')+
@@ -654,20 +727,24 @@ function showStats() {
             rw('Prefetch Skipped','跳过预取次数',r.skip,'','c-s')+
             rw('Rewrite Skipped','跳过重写次数',r.savedRes,'','c-s')+
             rw('Lazy Deployed','懒加载优化',r.lazy,'','c-l')+
-            rw('Data Saved','本次节省流量',r.sesData,' MB','c-p')+
-            rw('Time Saved','本次节省时间',fmt(r.sesTime),'','c-a'))+
+            rw('Data Saved (est.)','本次节省流量(估算)',r.sesData,' MB','c-p')+
+            rw('Time Saved (est.)','本次节省时间(估算)',fmt(r.sesTime),'','c-a'))+
     `</div>`;
 
-    // ── Cumulative section: all-time track record ──
     const cumCards = `<div class="wra-hdr mt-18"><span class="wra-hdr-en">🗄️ All-Time Cumulative</span><span class="wra-hdr-zh">历史累计统计</span></div><div class="wra-cols">` +
         c0('📊','Lifetime Acceleration','历史加速统计',
             rw('CDN Accelerated','CDN累计加速',r.cumCdn,'','c-p')+
             rw('GitHub Accelerated','GitHub累计加速',r.cumGh,'','c-l')+
             rw('Resources Rewritten','资源累计重写',r.cumRes,'','c-s')+
-            rw('Prefetches Skipped','预取累计跳过',r.cumSkip,'','c-n'))+
+            rw('Prefetches Succeeded','预取累计成功',r.cumPs,'','c-n'))+
+        c0('💾','Lifetime Data Saver','历史省流统计',
+            rw('Prefetches Skipped','预取累计跳过',r.cumSkip,'','c-n')+
+            rw('Rewrites Skipped','重写累计跳过',r.cumSavedRes,'','c-s')+
+            rw('Lazy Deployments','懒加载累计',r.cumLazy,'','c-l')+
+            rw('Speculations Fired','预渲染累计',r.cumSp,'','c-w'))+
         c0('💎','Lifetime Savings','历史节省统计',
-            rw('Total Data Saved','累计节省流量',r.cumData,' MB','c-p')+
-            rw('Total Time Saved','累计节省时间',fmt(r.cumTime),'','c-a')+
+            rw('Total Data Saved (est.)','累计节省流量(估算)',r.cumData,' MB','c-p')+
+            rw('Total Time Saved (est.)','累计节省时间(估算)',fmt(r.cumTime),'','c-a')+
             rw('Tracking Since','统计起始时间',fmt(r.cumSince),'','c-n')+
             rw('Total Uptime','累计运行时长',fmt(r.up+r.cumSince),'','c-n'))+
     `</div>`;
@@ -681,12 +758,14 @@ function showStats() {
             modal({title:'✅ Reset Complete\n已重置',html:'<p class="tc">All statistics and smart cache cleared.\n全部统计数据与智能缓存已清除。</p>',ok:'OK 好的',noCancel:true});
         }
     });
+    } catch(e) { console.warn('WRA showStats error:', e); }
 }
 
 // ════════════════════════════════════════════
 // 15. UI — Settings Panel
 // ════════════════════════════════════════════
 function showSettings() {
+    try {
     const sec = (icon, en, zh) =>
         `<div class="wra-sec"><span class="wra-sec-i">${icon}</span><div class="wra-sec-t"><div class="wra-sec-en">${en}</div><div class="wra-sec-zh">${zh}</div></div></div>`;
 
@@ -702,12 +781,10 @@ function showSettings() {
         <div class="wra-banner">🚀 Web Rocket Accelerator<span class="wra-ban-zh">网页火箭加速器</span><span class="wra-ver">v${V}</span></div>
 
         ${sec('🎯','Prefetch Strategy','预取策略')}
-        ${tgl('S_ext','Accelerate External Links','加速外部链接',
-             'Prefetch and accelerate outbound links on hover','悬停时预取并加速外部链接',S.g('ext',true))}
-        ${tgl('S_pre','Enable Preload','启用预加载',
-             'Inject preload hints for critical resources','为关键资源注入预加载提示',S.g('pre',true))}
         ${tgl('S_ind','Show Acceleration Indicator','显示加速指示器',
              'Display a floating badge for recent accelerations','显示最近加速的浮动角标',S.g('ind_on',false))}
+        ${tgl('S_spec','Speculation Rules Prerender','原生预测渲染',
+             'Chrome-native prerender for eligible cross-origin links','Chrome 原生 prerender 跨域链接',S.g('spec_on',true))}
 
         ${sec('🌍','CDN Acceleration','CDN 加速')}
         ${tgl('S_cdn','Universal CDN Mirror','通用CDN国内镜像',
@@ -732,10 +809,11 @@ function showSettings() {
 
     modal({title:'⚙️ Accelerator Settings\n加速器设置',html:h,ok:'Close 关闭',noCancel:true});
     setTimeout(bindSettings,60);
+    } catch(e) { console.warn('WRA showSettings error:', e); }
 }
 
 function bindSettings() {
-    const m = {S_ext:'ext', S_pre:'pre', S_ind:'ind_on', S_cdn:'cdn_on', S_ghm:'gh_mirror', S_res:'res_on', S_smart:'smart_on', S_lazy:'lazy_on'};
+    const m = {S_ind:'ind_on', S_spec:'spec_on', S_cdn:'cdn_on', S_ghm:'gh_mirror', S_res:'res_on', S_smart:'smart_on', S_lazy:'lazy_on'};
     document.querySelectorAll('.wra-tgl').forEach(el => {
         el.addEventListener('click', () => {
             el.classList.toggle('on');
@@ -755,11 +833,17 @@ function bindSettings() {
 // ════════════════════════════════════════════
 function modal({title, html, ok='Confirm 确定', cancel, noCancel, footer, ms}={}) {
     return new Promise(res => {
+        try {
         const ov = document.createElement('div');
         ov.className = 'wra-overlay';
 
         const md = document.createElement('div');
         md.className = 'wra-modal';
+
+        // Inline style fallback — ensures modal is visible even if GM_addStyle was blocked
+        // Uses !important to override host page CSS (critical for CSP-strict sites like bing.com desktop mode)
+        md.style.cssText = 'background:linear-gradient(160deg,#f7f3ec,#fdfaf5) !important;border-radius:12px !important;max-width:490px !important;width:92% !important;max-height:84vh !important;overflow-y:auto !important;box-shadow:0 8px 28px rgba(70,50,30,.08) !important;border:1px solid #e3dbcf !important;color:#3d352c !important;padding:20px 24px !important;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif !important;position:relative !important;opacity:1 !important';
+        ov.style.cssText = 'position:fixed !important;inset:0 !important;background:rgba(70,50,30,.32) !important;backdrop-filter:blur(5px) !important;-webkit-backdrop-filter:blur(5px) !important;display:flex !important;align-items:center !important;justify-content:center !important;z-index:2147483647 !important;opacity:1 !important';
 
         md.innerHTML = `<h3 class="wra-modal-title">${(title||'').replace(/\n/g,'<br>')}</h3>
 <div class="wra-modal-body">${html||''}</div>
@@ -769,14 +853,18 @@ ${footer ? `<div class="wra-modal-footer">${footer}</div>` : ''}
     <button data-a="ok" class="wra-btn-ok">${ok}</button>
 </div>`;
 
-        document.body.appendChild(ov);
+        // Append to documentElement as fallback — some sites (bing desktop mode) have body issues
+        const target = document.body || document.documentElement;
+        if (!target) { res('dismiss'); return; }
+        target.appendChild(ov);
         ov.appendChild(md);
 
-        const cls = a => { ov.remove(); res(a); };
+        const cls = a => { try { ov.remove(); } catch {} res(a); };
         md.querySelector('[data-a="ok"]')?.addEventListener('click', () => cls('ok'));
         md.querySelector('[data-a="cancel"]')?.addEventListener('click', () => cls('cancel'));
         ov.addEventListener('click', e => { if (e.target === ov) cls('dismiss'); });
         if (ms) setTimeout(() => cls('timeout'), ms);
+        } catch(e) { console.warn('WRA modal error:', e); res('dismiss'); }
     });
 }
 
@@ -815,150 +903,162 @@ function injectCSS() {
 
 /* ===== Overlay ===== */
 .wra-overlay {
-    position:fixed;inset:0;background:rgba(70,50,30,.32);
-    backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
-    display:flex;align-items:center;justify-content:center;
-    z-index:2147483647;animation:wraF .18s ease;
+    position:fixed !important;inset:0 !important;background:rgba(70,50,30,.32) !important;
+    backdrop-filter:blur(5px) !important;-webkit-backdrop-filter:blur(5px) !important;
+    display:flex !important;align-items:center !important;justify-content:center !important;
+    z-index:2147483647 !important;animation:wraF .18s ease !important;
 }
 @keyframes wraF{from{opacity:0}to{opacity:1}}
 
 /* ===== Modal ===== */
 .wra-modal {
-    background:linear-gradient(160deg,#f7f3ec,#fdfaf5);
-    border-radius:var(--rad);max-width:490px;width:92%;
-    max-height:84vh;overflow-y:auto;
-    box-shadow:var(--sh);border:1px solid var(--bd);
-    color:var(--tx);font-family:var(--font);
-    padding:20px 24px;
-    animation:wraS .22s cubic-bezier(.16,1,.3,1);
+    background:linear-gradient(160deg,#f7f3ec,#fdfaf5) !important;
+    border-radius:var(--rad) !important;max-width:490px !important;width:92% !important;
+    max-height:84vh !important;overflow-y:auto !important;
+    box-shadow:var(--sh) !important;border:1px solid var(--bd) !important;
+    color:var(--tx) !important;font-family:var(--font) !important;
+    padding:20px 24px !important;
+    animation:wraS .22s cubic-bezier(.16,1,.3,1) !important;
 }
 @keyframes wraS{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 
 .wra-modal-title {
-    text-align:center;margin:0 0 16px;
-    font-size:16px;font-weight:700;color:var(--tx);
-    line-height:1.5;letter-spacing:.01em;
+    text-align:center !important;margin:0 0 16px !important;
+    font-size:16px !important;font-weight:700 !important;color:var(--tx) !important;
+    line-height:1.5 !important;letter-spacing:.01em !important;
 }
-.wra-modal-body{margin-bottom:4px}
-.wra-modal-footer{margin-top:10px;padding-top:10px;border-top:1px solid var(--bd-lt);font-size:11px;color:var(--t2)}
-.wra-modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
+.wra-modal-body{margin-bottom:4px !important}
+.wra-modal-footer{margin-top:10px !important;padding-top:10px !important;border-top:1px solid var(--bd-lt) !important;font-size:11px !important;color:var(--t2) !important}
+.wra-modal-actions{display:flex !important;gap:8px !important;justify-content:flex-end !important;margin-top:14px !important}
 
 .wra-btn-cancel {
-    padding:8px 16px;border:1px solid var(--bd);border-radius:var(--rad-sm);
-    cursor:pointer;background:var(--bg-card);color:var(--t2);
-    font-size:12px;font-weight:500;font-family:var(--font);transition:all .18s;
+    padding:8px 16px !important;border:1px solid var(--bd) !important;border-radius:var(--rad-sm) !important;
+    cursor:pointer !important;background:var(--bg-card) !important;color:var(--t2) !important;
+    font-size:12px !important;font-weight:500 !important;font-family:var(--font) !important;transition:all .18s !important;
 }
-.wra-btn-cancel:hover{background:#efe8dc;border-color:#d4c8b4}
+.wra-btn-cancel:hover{background:#efe8dc !important;border-color:#d4c8b4 !important}
 .wra-btn-ok {
-    padding:8px 20px;border:none;border-radius:var(--rad-sm);
-    cursor:pointer;background:var(--g-btn);color:#fff;
-    font-size:12px;font-weight:600;font-family:var(--font);
-    box-shadow:0 2px 10px rgba(26,138,125,.22);transition:all .18s;
+    padding:8px 20px !important;border:none !important;border-radius:var(--rad-sm) !important;
+    cursor:pointer !important;background:var(--g-btn) !important;color:#fff !important;
+    font-size:12px !important;font-weight:600 !important;font-family:var(--font) !important;
+    box-shadow:0 2px 10px rgba(26,138,125,.22) !important;transition:all .18s !important;
 }
-.wra-btn-ok:hover{box-shadow:0 4px 14px rgba(26,138,125,.32);transform:translateY(-1px)}
+.wra-btn-ok:hover{box-shadow:0 4px 14px rgba(26,138,125,.32) !important;transform:translateY(-1px) !important}
 
 /* ===== 2-Column Grid ===== */
-.wra-cols{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.wra-cols{display:grid !important;grid-template-columns:1fr 1fr !important;gap:8px !important}
 /* ===== Section Headers ===== */
-.wra-hdr{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0 2px 0;margin-bottom:4px;border-bottom:1px solid var(--bd-lt)}
-.wra-hdr-en{font-size:13px;font-weight:600;color:var(--c-a)}
-.wra-hdr-zh{font-size:11px;color:var(--t3);text-align:right}
-.mt-18{margin-top:18px}
+.wra-hdr{display:flex !important;justify-content:space-between !important;align-items:baseline !important;padding:6px 0 2px 0 !important;margin-bottom:4px !important;border-bottom:1px solid var(--bd-lt) !important}
+.wra-hdr-en{font-size:13px !important;font-weight:600 !important;color:var(--c-a) !important}
+.wra-hdr-zh{font-size:11px !important;color:var(--t3) !important;text-align:right !important}
+.mt-18{margin-top:18px !important}
 
 /* ===== Cards ===== */
 .wra-card {
-    background:var(--bg-card);border:1px solid var(--bd-lt);
-    border-radius:var(--rad-sm);margin-bottom:10px;overflow:hidden;
-    box-shadow:0 1px 3px rgba(70,50,30,.03);
+    background:var(--bg-card) !important;border:1px solid var(--bd-lt) !important;
+    border-radius:var(--rad-sm) !important;margin-bottom:10px !important;overflow:hidden !important;
+    box-shadow:0 1px 3px rgba(70,50,30,.03) !important;
 }
 .wra-card-head {
-    display:flex;align-items:center;gap:8px;padding:8px 12px;
-    background:linear-gradient(135deg,#f6f1ea,#fefcf8);
-    border-bottom:1px solid var(--bd-lt);
+    display:flex !important;align-items:center !important;gap:8px !important;padding:8px 12px !important;
+    background:linear-gradient(135deg,#f6f1ea,#fefcf8) !important;
+    border-bottom:1px solid var(--bd-lt) !important;
 }
-.wra-card-icon{font-size:15px}
-.wra-card-titles{display:flex;flex-direction:column;line-height:1.35}
-.wra-card-en{font-size:12px;font-weight:700;color:var(--tx)}
-.wra-card-zh{font-size:10px;color:var(--t3)}
-.wra-card-body{padding:6px 12px 8px}
+.wra-card-icon{font-size:15px !important}
+.wra-card-titles{display:flex !important;flex-direction:column !important;line-height:1.35 !important}
+.wra-card-en{font-size:12px !important;font-weight:700 !important;color:var(--tx) !important}
+.wra-card-zh{font-size:10px !important;color:var(--t3) !important}
+.wra-card-body{padding:6px 12px 8px !important}
 
 /* ===== Stat Rows ===== */
-.wra-r{display:flex;justify-content:space-between;align-items:flex-start;padding:4px 0}
-.wra-r-l{display:flex;flex-direction:column;line-height:1.45}
-.wra-r-en{font-size:11px;color:var(--t2);font-family:var(--font)}
-.wra-r-zh{font-size:10px;color:var(--t3)}
-.wra-r-v{font-size:14px;font-weight:700;font-family:var(--mono);text-align:right;align-self:center}
+.wra-r{display:flex !important;justify-content:space-between !important;align-items:flex-start !important;padding:4px 0 !important}
+.wra-r-l{display:flex !important;flex-direction:column !important;line-height:1.45 !important}
+.wra-r-en{font-size:11px !important;color:var(--t2) !important;font-family:var(--font) !important}
+.wra-r-zh{font-size:10px !important;color:var(--t3) !important}
+.wra-r-v{font-size:14px !important;font-weight:700 !important;font-family:var(--mono) !important;text-align:right !important;align-self:center !important}
 
 /* ===== Colors ===== */
-.c-p{color:var(--c-p)}.c-s{color:var(--c-s)}.c-w{color:var(--c-w)}
-.c-l{color:var(--c-l)}.c-a{color:var(--c-a)}.c-n{color:var(--c-n)}
-.tc{text-align:center;color:var(--t2);padding:6px 0;font-size:13px;line-height:1.6}
+.c-p{color:var(--c-p) !important}.c-s{color:var(--c-s) !important}.c-w{color:var(--c-w) !important}
+.c-l{color:var(--c-l) !important}.c-a{color:var(--c-a) !important}.c-n{color:var(--c-n) !important}
+.tc{text-align:center !important;color:var(--t2) !important;padding:6px 0 !important;font-size:13px !important;line-height:1.6 !important}
 
 /* ===== Settings ===== */
 .wra-banner {
-    background:var(--g-hdr);color:#fff;padding:10px 14px;
-    border-radius:var(--rad-sm);margin-bottom:12px;
-    font-size:13px;font-weight:700;text-align:center;
-    box-shadow:0 3px 12px rgba(26,138,125,.18);
-    display:flex;flex-direction:column;align-items:center;gap:2px;
-    position:relative;
+    background:var(--g-hdr) !important;color:#fff !important;padding:10px 14px !important;
+    border-radius:var(--rad-sm) !important;margin-bottom:12px !important;
+    font-size:13px !important;font-weight:700 !important;text-align:center !important;
+    box-shadow:0 3px 12px rgba(26,138,125,.18) !important;
+    display:flex !important;flex-direction:column !important;align-items:center !important;gap:2px !important;
+    position:relative !important;
 }
-.wra-ban-zh{font-size:11px;font-weight:500;opacity:.9}
+.wra-ban-zh{font-size:11px !important;font-weight:500 !important;opacity:.9 !important}
 .wra-ver {
-    position:absolute;top:8px;right:12px;
-    background:rgba(255,255,255,.22);padding:1px 8px;
-    border-radius:10px;font-size:10px;font-weight:500;
+    position:absolute !important;top:8px !important;right:12px !important;
+    background:rgba(255,255,255,.22) !important;padding:1px 8px !important;
+    border-radius:10px !important;font-size:10px !important;font-weight:500 !important;
 }
-.wra-sec{display:flex;align-items:center;gap:8px;padding:10px 0 6px;margin-top:2px;border-bottom:1px solid var(--bd-lt)}
-.wra-sec-i{font-size:14px}
-.wra-sec-t{display:flex;flex-direction:column;line-height:1.35}
-.wra-sec-en{font-size:11px;font-weight:700;color:var(--c-p);text-transform:uppercase;letter-spacing:.04em}
-.wra-sec-zh{font-size:10px;color:var(--t3)}
+.wra-sec{display:flex !important;align-items:center !important;gap:8px !important;padding:10px 0 6px !important;margin-top:2px !important;border-bottom:1px solid var(--bd-lt) !important}
+.wra-sec-i{font-size:14px !important}
+.wra-sec-t{display:flex !important;flex-direction:column !important;line-height:1.35 !important}
+.wra-sec-en{font-size:11px !important;font-weight:700 !important;color:var(--c-p) !important;text-transform:uppercase !important;letter-spacing:.04em !important}
+.wra-sec-zh{font-size:10px !important;color:var(--t3) !important}
 
-.wra-set{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--bd-lt);gap:10px}
-.wra-set-i{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
-.wra-set-n{display:flex;flex-direction:column;line-height:1.4}
-.wra-set-en{font-size:12px;font-weight:600;color:var(--tx)}
-.wra-set-zh{font-size:10px;color:var(--t3)}
-.wra-set-d{display:flex;flex-direction:column;line-height:1.4}
-.wra-set-den{font-size:10px;color:var(--t3)}
-.wra-set-dzh{font-size:10px;color:var(--t3);font-style:italic}
+.wra-set{display:flex !important;align-items:center !important;justify-content:space-between !important;padding:10px 0 !important;border-bottom:1px solid var(--bd-lt) !important;gap:10px !important}
+.wra-set-i{flex:1 !important;min-width:0 !important;display:flex !important;flex-direction:column !important;gap:2px !important}
+.wra-set-n{display:flex !important;flex-direction:column !important;line-height:1.4 !important}
+.wra-set-en{font-size:12px !important;font-weight:600 !important;color:var(--tx) !important}
+.wra-set-zh{font-size:10px !important;color:var(--t3) !important}
+.wra-set-d{display:flex !important;flex-direction:column !important;line-height:1.4 !important}
+.wra-set-den{font-size:10px !important;color:var(--t3) !important}
+.wra-set-dzh{font-size:10px !important;color:var(--t3) !important;font-style:italic !important}
 
 /* ===== Toggle ===== */
-.wra-tgl{position:relative;width:42px;height:24px;background:#d4ccc0;border-radius:12px;cursor:pointer;transition:all .25s cubic-bezier(.4,0,.2,1);flex-shrink:0}
-.wra-tgl.on{background:var(--c-p)}
-.wra-tgl::after{content:'';position:absolute;top:2px;left:2px;width:20px;height:20px;background:#fff;border-radius:50%;transition:transform .25s cubic-bezier(.4,0,.2,1);box-shadow:0 1px 2px rgba(70,50,30,.12)}
-.wra-tgl.on::after{transform:translateX(18px)}
+.wra-tgl{position:relative !important;width:42px !important;height:24px !important;background:#d4ccc0 !important;border-radius:12px !important;cursor:pointer !important;transition:all .25s cubic-bezier(.4,0,.2,1) !important;flex-shrink:0 !important}
+.wra-tgl.on{background:var(--c-p) !important}
+.wra-tgl::after{content:'' !important;position:absolute !important;top:2px !important;left:2px !important;width:20px !important;height:20px !important;background:#fff !important;border-radius:50% !important;transition:transform .25s cubic-bezier(.4,0,.2,1) !important;box-shadow:0 1px 2px rgba(70,50,30,.12) !important}
+.wra-tgl.on::after{transform:translateX(18px) !important}
 
 /* ===== Slider ===== */
-.wra-slide{padding:12px 0 4px;margin-top:6px;border-top:1px solid var(--bd-lt)}
-.wra-slide-t{display:flex;flex-direction:column;align-items:center;gap:1px;line-height:1.4}
-.wra-slide-en{font-size:11px;font-weight:600;color:var(--t2)}
-.wra-slide-zh{font-size:10px;color:var(--t3)}
-.wra-slide-v{text-align:center;font-size:20px;font-weight:700;color:var(--c-p);font-family:var(--mono);margin:4px 0}
-.wra-slide-h{display:flex;flex-direction:column;align-items:center;gap:1px;margin-top:4px;line-height:1.4}
-.wra-slide-hen{font-size:9px;color:var(--t3)}
-.wra-slide-hzh{font-size:9px;color:var(--t3)}
-#WRA_DLY{width:100%;height:5px;-webkit-appearance:none;appearance:none;background:linear-gradient(90deg,var(--c-p),var(--c-a));border-radius:3px;outline:none;margin-top:4px;cursor:pointer}
-#WRA_DLY::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;background:#fff;border-radius:50%;cursor:pointer;border:2px solid var(--c-p);box-shadow:0 2px 6px rgba(26,138,125,.2)}
+.wra-slide{padding:12px 0 4px !important;margin-top:6px !important;border-top:1px solid var(--bd-lt) !important}
+.wra-slide-t{display:flex !important;flex-direction:column !important;align-items:center !important;gap:1px !important;line-height:1.4 !important}
+.wra-slide-en{font-size:11px !important;font-weight:600 !important;color:var(--t2) !important}
+.wra-slide-zh{font-size:10px !important;color:var(--t3) !important}
+.wra-slide-v{text-align:center !important;font-size:20px !important;font-weight:700 !important;color:var(--c-p) !important;font-family:var(--mono) !important;margin:4px 0 !important}
+.wra-slide-h{display:flex !important;flex-direction:column !important;align-items:center !important;gap:1px !important;margin-top:4px !important;line-height:1.4 !important}
+.wra-slide-hen{font-size:9px !important;color:var(--t3) !important}
+.wra-slide-hzh{font-size:9px !important;color:var(--t3) !important}
+#WRA_DLY{width:100% !important;height:5px !important;-webkit-appearance:none !important;appearance:none !important;background:linear-gradient(90deg,var(--c-p),var(--c-a)) !important;border-radius:3px !important;outline:none !important;margin-top:4px !important;cursor:pointer !important}
+#WRA_DLY::-webkit-slider-thumb{-webkit-appearance:none !important;appearance:none !important;width:18px !important;height:18px !important;background:#fff !important;border-radius:50% !important;cursor:pointer !important;border:2px solid var(--c-p) !important;box-shadow:0 2px 6px rgba(26,138,125,.2) !important}
 
 /* ===== Badge ===== */
 .wra-badge {
-    position:fixed;bottom:20px;right:20px;
-    background:rgba(254,252,248,.94);color:var(--tx);
-    padding:8px 14px;border-radius:20px;font-size:11px;
-    z-index:2147483646;cursor:pointer;
-    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-    border:1px solid var(--bd);
-    box-shadow:0 3px 16px rgba(70,50,30,.08);
-    font-family:var(--font);transition:all .22s;
-    display:flex;align-items:center;gap:5px;
+    position:fixed !important;bottom:20px !important;right:20px !important;
+    background:rgba(254,252,248,.94) !important;color:var(--tx) !important;
+    padding:8px 14px !important;border-radius:20px !important;font-size:11px !important;
+    z-index:2147483646 !important;cursor:pointer !important;
+    backdrop-filter:blur(12px) !important;-webkit-backdrop-filter:blur(12px) !important;
+    border:1px solid var(--bd) !important;
+    box-shadow:0 3px 16px rgba(70,50,30,.08) !important;
+    font-family:var(--font) !important;transition:all .22s !important;
+    display:flex !important;align-items:center !important;gap:5px !important;
 }
 .wra-badge:hover{transform:translateY(-2px);border-color:var(--c-p);box-shadow:var(--sh-h)}
 .wra-badge-tag-gh{color:var(--c-l);font-size:10px}
 .wra-badge-tag-cdn{color:var(--c-p);font-size:10px}
 .wra-badge-tag-skip{color:var(--c-s);font-size:10px}
 .wra-badge-text{color:var(--t2)}
+
+/* ===== Entry Button ===== */
+.wra-entry {
+    position:fixed !important;bottom:76px !important;right:20px !important;width:42px !important;height:42px !important;
+    background:var(--g-btn) !important;color:#fff !important;border-radius:50% !important;
+    display:flex !important;align-items:center !important;justify-content:center !important;
+    font-size:18px !important;cursor:pointer !important;z-index:2147483646 !important;
+    box-shadow:0 3px 14px rgba(26,138,125,.28) !important;
+    transition:all .22s !important;border:none !important;user-select:none !important;
+    animation:wraS .35s cubic-bezier(.16,1,.3,1) !important;
+}
+.wra-entry:hover{transform:scale(1.12) !important;box-shadow:0 5px 20px rgba(26,138,125,.38) !important}
     `);
 }
 
@@ -969,6 +1069,7 @@ function injectCSS() {
 function setupResourceObserver() {
     if (typeof MutationObserver === 'undefined') return;
     new MutationObserver(mutations => {
+        try {
         const smartOn = S.g('smart_on', true);
         const lazyOn = S.g('lazy_on', true);
         const resOn = S.g('res_on', true);
@@ -977,21 +1078,33 @@ function setupResourceObserver() {
         for (const m of mutations) {
             for (const node of m.addedNodes) {
                 if (node.nodeType !== 1) continue;
-                if (resOn && smartOn) accelerateNode(node);
+                if (resOn) accelerateNode(node);
                 if (lazyOn) {
                     const c = lazyNode(node);
                     if (c > 0) { for (let li = 0; li < c; li++) stInc('lazy'); }
                 }
             }
         }
+        } catch(e) { /* silent — DOM observer must never break */ }
     }).observe(document.documentElement, {childList: true, subtree: true});
 }
 
 setupResourceObserver();
 
+// Inject preconnect/dns-prefetch at module level — before DOMContentLoaded
+// This warms up TCP+TLS for all GitHub/CDN domains as early as possible
+(function earlyPreconnect() {
+    try {
+        const hd = document.head || document.documentElement;
+        if (!hd) { document.addEventListener('DOMContentLoaded', injectPreconnect, {once:true}); return; }
+        injectPreconnect();
+    } catch {}
+})();
+
 function init() {
+    try {
     const defaults = {
-        ext:true, pre:true, ind_on:false,
+        ind_on:false,
         cdn_on:true, gh_mirror:true, spec_on:true, res_on:true,
         smart_on:true, lazy_on:true,
         delay:65
@@ -1000,22 +1113,8 @@ function init() {
         if (S.g(k) === void 0) S.s(k, v);
     });
 
-    injectCSS();
-    injectPreconnect();
-    loadHistory(); // warm up cache index
-
-    // Scan and accelerate existing resources
-    if (S.g('res_on', true)) {
-        const resc = scanExistingResources();
-        if (resc > 0) saveSes();
-    }
-
-    // Lazy-optimize existing elements
-    if (S.g('lazy_on', true)) {
-        const lazyc = scanAndLazy();
-        if (lazyc > 0) { for (let li = 0; li < lazyc; li++) stInc('lazy'); saveSes(); }
-    }
-
+    // ⚠️ Register menu commands FIRST — before any DOM ops
+    // Ensures user can always access stats/settings even if scan fails
     GM_registerMenuCommand('🚀 Statistics 加速统计', showStats);
     GM_registerMenuCommand('⚙️ Settings 加速器设置', showSettings);
     GM_registerMenuCommand('🔄 Reset 重置统计', () => {
@@ -1025,17 +1124,71 @@ function init() {
         document.getElementById('wra-badge')?.remove();
     });
 
-    // Font optimization: inject font-display:swap to avoid invisible text during load
-    if (S.g('lazy_on', true)) {
-        try {
-            const fontStyle = document.createElement('style');
-            fontStyle.textContent = '@font-face{font-display:swap!important}'; // hint: requires existing @font-face rules to cascade
-            (document.head || document.documentElement).appendChild(fontStyle);
-        } catch {}
+    // Background refresh GitHub hosts (non-blocking)
+    // If cache is stale, fetch new list in background — next page load picks it up
+    if (!getStoredGitHubDomains()) {
+        refreshGitHubDomains().catch(() => {});
     }
 
-    if (!('IntersectionObserver' in window)) return;
+    // Create entry button only if user opted in via settings
+    if (S.g('ind_on', false)) {
+        tryCreateEntry();
+    }
 
+    // Retry entry button creation if body wasn't ready — handles complex pages (bing desktop mode)
+    function tryCreateEntry(retries) {
+        if (retries === void 0) retries = 0;
+        if (retries > 5) return;
+        try {
+            if (!document.body) {
+                if (retries < 3) requestAnimationFrame(() => tryCreateEntry(retries + 1));
+                else setTimeout(() => tryCreateEntry(retries + 1), 200 * (retries - 1));
+                return;
+            }
+            let entryBtn = document.getElementById('wra-entry');
+            if (!entryBtn) {
+                entryBtn = document.createElement('div');
+                entryBtn.id = 'wra-entry';
+                entryBtn.className = 'wra-entry';
+                entryBtn.title = 'Web Rocket Accelerator — Click for options / 点击打开菜单';
+                entryBtn.textContent = '🚀';
+                entryBtn.addEventListener('click', () => {
+                    modal({
+                        title: '🚀 Web Rocket Accelerator\n网页火箭加速器',
+                        html: `<p class="tc" style="margin:8px 0 4px">v${V} — <a href="#" id="wra-entry-stats" style="color:var(--c-p);text-decoration:none;font-weight:600">Statistics 统计</a> · <a href="#" id="wra-entry-settings" style="color:var(--c-l);text-decoration:none;font-weight:600">Settings 设置</a></p>`,
+                        ok: 'Close 关闭',
+                        noCancel: true,
+                        footer: `<span style="color:var(--t3);font-size:10px">Click menu command or badge to reopen · 通过菜单或徽章重新打开</span>`
+                    });
+                    setTimeout(() => {
+                        document.getElementById('wra-entry-stats')?.addEventListener('click', e => { e.preventDefault(); showStats(); });
+                        document.getElementById('wra-entry-settings')?.addEventListener('click', e => { e.preventDefault(); showSettings(); });
+                    }, 50);
+                });
+                document.body.appendChild(entryBtn);
+            }
+        } catch(e) { console.warn('WRA entry button error:', e); }
+    }
+
+    injectCSS();
+    loadHistory(); // warm up cache index
+
+    // Isolated DOM scans — failure here won't block menu or events
+    try {
+        if (S.g('res_on', true)) {
+            const resc = scanExistingResources();
+            if (resc > 0) saveSes();
+        }
+    } catch(e) { console.warn('WRA scanExistingResources error:', e); }
+
+    try {
+        if (S.g('lazy_on', true)) {
+            const lazyc = scanAndLazy();
+            if (lazyc > 0) { for (let li = 0; li < lazyc; li++) stInc('lazy'); saveSes(); }
+        }
+    } catch(e) { console.warn('WRA scanAndLazy error:', e); }
+
+    // ── Event listeners (viewport-independent) ──
     const opt = {capture:true, passive:true};
     let lastTouch=0, hoverTmr=null;
 
@@ -1059,34 +1212,42 @@ function init() {
         hoverTmr = setTimeout(() => { prefetch(l); hoverTmr = null; }, S.g('delay', 65));
     }, opt);
 
-    const io = new IntersectionObserver(es => {
-        for (const e of es) {
-            if (e.isIntersecting) { io.unobserve(e.target); prefetch(e.target); }
-        }
-    }, {rootMargin: C.viewMargin});
-
-    for (const a of document.querySelectorAll('a[href]')) {
-        if (isOk(a)) io.observe(a);
-    }
-
-    new MutationObserver(ms => {
-        for (const m of ms) {
-            for (const n of m.addedNodes) {
-                if (n.nodeType !== 1) continue;
-                if (n.tagName === 'A' && isOk(n)) io.observe(n);
-                n.querySelectorAll?.('a')?.forEach(a => { if (isOk(a)) io.observe(a); });
+    // ── IntersectionObserver (viewport-aware prefetch) ──
+    if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(es => {
+            for (const e of es) {
+                if (e.isIntersecting) { io.unobserve(e.target); prefetch(e.target); }
             }
+        }, {rootMargin: C.viewMargin});
+
+        for (const a of document.querySelectorAll('a[href]')) {
+            if (isOk(a)) io.observe(a);
         }
-    }).observe(document.body, {childList:true, subtree:true});
+
+        // Watch for dynamically added links — safe fallback if body not ready
+        try {
+            const target = document.body || document.documentElement;
+            new MutationObserver(ms => {
+                for (const m of ms) {
+                    for (const n of m.addedNodes) {
+                        if (n.nodeType !== 1) continue;
+                        if (n.tagName === 'A' && isOk(n)) io.observe(n);
+                        n.querySelectorAll?.('a')?.forEach(a => { if (isOk(a)) io.observe(a); });
+                    }
+                }
+            }).observe(target, {childList:true, subtree:true});
+        } catch {}
+    }
 
     const idle = fn => ('requestIdleCallback' in window ? requestIdleCallback(fn, {timeout:3000}) : setTimeout(fn, 200));
     idle(() => {
         for (const a of document.querySelectorAll('a[href]')) {
             const r = a.getBoundingClientRect();
-            if (r.top < window.innerHeight && isOk(a)) prefetch(a);
+            if (r.top < window.innerHeight && r.bottom > 0 && isOk(a)) prefetch(a);
         }
     });
     idle(applySpec);
+    } catch(e) { console.warn('WRA init error:', e); }
 }
 
 if (document.readyState === 'loading') {
