@@ -104,7 +104,7 @@ Install a userscript manager first:
 
 先安装用户脚本管理器：
 
-- [Tampermonkey](https://www.tampermonkey.net/) — Recommended / 推荐
+- [Tampermonkey](https://www.tampermonkey.net/)
 - [Violentmonkey](https://violentmonkey.github.io/)
 - [ScriptCat](https://docs.scriptcat.org/)
 
