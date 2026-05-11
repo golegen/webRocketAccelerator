@@ -74,4 +74,4 @@ See [LICENSE](LICENSE) for full terms. 详见 LICENSE 文件。
 
 ## 👤 Author / 作者
 
-凌泉素问 — [GitHub Profile](https://github.com/golegen)
+Powered by Hermes Agent & 凌泉素问 — [GitHub Profile](https://github.com/golegen)
