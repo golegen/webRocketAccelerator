@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         webRocketAccelerator
 // @namespace    https://github.com/golegen/webRocketAccelerator
-// @version      5.6.7
+// @version      5.7.0
 // @author       凌泉素问
-// @description  v5.6.7 — 智能网页加速：预取·CDN镜像·GitHub加速·省流·智能缓存 | Smart web accelerator with per-page session + all-time cumulative stats
+// @description  v5.7.0 — 智能网页加速：预取·CDN镜像·GitHub加速·省流·智能缓存 | Smart web accelerator with per-page session + all-time cumulative stats
 // @match        *://*/*
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -14,6 +14,11 @@
 // @connect      cdn.staticfile.org
 // @connect      gh-proxy.com
 // @connect      hosts.gitcdn.top
+// @connect      cdn.jsdelivr.net
+// @connect      registry.npmmirror.com
+// @connect      cdn.sep.cc
+// @connect      fonts.loli.net
+// @connect      lib.baomitu.com
 // @icon         data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYiIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWExYTJlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMTYyMTNlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMzQ2MCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZiIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmZiODMwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjZmY2YjM1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2U5NDU2MCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImciPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjIiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPHBhdGggZD0iTTMyIDQgQzI4IDQgMjIgMTAgMjAgMTggQzE4IDMwIDE2IDQwIDE2IDQ4IEMxNiA1MiAxOCA1NiAyMiA1OCBDMjQgNTggMzAgNTYgMzIgNTIgQzM0IDU2IDQwIDU4IDQyIDU4IEM0NiA1NiA0OCA1MiA0OCA0OCBDNDggNDAgNDYgMzAgNDQgMTggQzQyIDEwIDM2IDQgMzIgNFoiIGZpbGw9InVybCgjYikiLz4KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjI0IiByPSI0LjUiIGZpbGw9IiM2YzYzZmYiLz4KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjI0IiByPSIyLjgiIGZpbGw9IiMwMGQyZmYiLz4KICA8cGF0aCBkPSJNMjIgNDQgTDYgNTYgTDIyIDU0WiIgZmlsbD0iIzE2MjEzZSIgb3BhY2l0eT0iLjkiLz4KICA8cGF0aCBkPSJNMjIgNDYgTDggNTYgTDIyIDU1WiIgZmlsbD0iIzdiNmZhYSIgb3BhY2l0eT0iLjUiLz4KICA8cGF0aCBkPSJNNDIgNDQgTDU4IDU2IEw0MiA1NFoiIGZpbGw9IiMxNjIxM2UiIG9wYWNpdHk9Ii45Ii8+CiAgPHBhdGggZD0iTTQyIDQ2IEw1NiA1NiBMNDIgNTVaIiBmaWxsPSIjN2I2ZmFhIiBvcGFjaXR5PSIuNSIvPgogIDxlbGxpcHNlIGN4PSIzMiIgY3k9IjYyIiByeD0iNiIgcnk9IjciIGZpbGw9InVybCgjZikiIGZpbHRlcj0idXJsKCNnKSIgb3BhY2l0eT0iLjgiLz4KICA8ZWxsaXBzZSBjeD0iMzIiIGN5PSI1OCIgcng9IjMiIHJ5PSI1IiBmaWxsPSIjZmZiODMwIi8+CiAgPGxpbmUgeDE9IjI0IiB5MT0iMTYiIHgyPSIyNCIgeTI9IjIyIiBzdHJva2U9IiMwMGQyZmYiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iLjQiLz4KICA8bGluZSB4MT0iMjgiIHkxPSIxNCIgeDI9IjI4IiB5Mj0iMjAiIHN0cm9rZT0iIzAwZDJmZiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIuMzUiLz4KICA8bGluZSB4MT0iMzYiIHkxPSIxNCIgeDI9IjM2IiB5Mj0iMjAiIHN0cm9rZT0iIzAwZDJmZiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIuMzUiLz4KICA8bGluZSB4MT0iNDAiIHkxPSIxNiIgeDI9IjQwIiB5Mj0iMjIiIHN0cm9rZT0iIzAwZDJmZiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIuNCIvPgogIDxjaXJjbGUgY3g9IjEwIiBjeT0iMTIiIHI9IjEuMiIgZmlsbD0iI2ZmZDcwMCIgb3BhY2l0eT0iLjciLz4KICA8Y2lyY2xlIGN4PSI1MiIgY3k9IjgiIHI9IjEiIGZpbGw9IiNmZmQ3MDAiIG9wYWNpdHk9Ii41Ii8+CiAgPGNpcmNsZSBjeD0iNDgiIGN5PSIxOCIgcj0iMC43IiBmaWxsPSIjZmZkNzAwIiBvcGFjaXR5PSIuMzUiLz4KPC9zdmc+
 // @run-at       document-start
 // ==/UserScript==
@@ -22,9 +27,14 @@
 'use strict';
 
 // ════════════════════════════════════════════
+// 0. Guard & Private State
+// ════════════════════════════════════════════
+let _WRA_PC = false; // ensures injectPreconnect runs at most once per page
+
+// ════════════════════════════════════════════
 // 1. Configuration Constants
 // ════════════════════════════════════════════
-const V = '5.6.7';
+const V = '5.7.0';
 const P = 'wra_';
 
 const C = {
@@ -58,15 +68,15 @@ const C = {
 
     ghMirrors: Object.freeze([
         {re:/^https?:\/\/raw\.githubusercontent\.com\/([^\/]+)\/([^\/]+)\/(.+)$/,
-         r:[{u:'https://cdn.jsdelivr.net/gh/$1/$2@$3'},{u:'https://gh-proxy.com/raw.githubusercontent.com/$1/$2/$3'}]},
+         r:[{u:'https://cdn.jsdelivr.net/gh/$1/$2@$3',m:'jsdelivr'},{u:'https://gh-proxy.com/raw.githubusercontent.com/$1/$2/$3',m:'gh-proxy'}]},
         {re:/^https?:\/\/github\.com\/([^\/]+)\/([^\/]+)\/blob\/([^\/]+)\/(.+)$/,
-         r:[{u:'https://cdn.jsdelivr.net/gh/$1/$2@$3/$4'},{u:'https://gh-proxy.com/raw.githubusercontent.com/$1/$2/$3/$4'}]},
+         r:[{u:'https://cdn.jsdelivr.net/gh/$1/$2@$3/$4',m:'jsdelivr'},{u:'https://gh-proxy.com/raw.githubusercontent.com/$1/$2/$3/$4',m:'gh-proxy'}]},
         {re:/^https?:\/\/github\.com\/([^\/]+)\/([^\/]+)\/(?:releases\/download|archive)\/(.+)$/,
-         r:[{u:'https://gh-proxy.com/https://github.com/$1/$2/archive/$3'}]},
+         r:[{u:'https://gh-proxy.com/https://github.com/$1/$2/archive/$3',m:'gh-proxy'}]},
         {re:/^https?:\/\/codeload\.github\.com\/(.+)$/,
-         r:[{u:'https://gh-proxy.com/https://codeload.github.com/$1'}]},
+         r:[{u:'https://gh-proxy.com/https://codeload.github.com/$1',m:'gh-proxy'}]},
         {re:/^https?:\/\/gist\.github\.com\/(.+)$/,
-         r:[{u:'https://gh-proxy.com/https://gist.github.com/$1'}]},
+         r:[{u:'https://gh-proxy.com/https://gist.github.com/$1',m:'gh-proxy'}]},
     ]),
 
     preDomains: Object.freeze([
@@ -223,7 +233,7 @@ function cdnAccel(url) {
 }
 
 function ghAccel(url) {
-    if (!isUrl(url)) return url;
+    if (!isUrl(url)) return { url, mirror: null };
     for (const rule of C.ghMirrors) {
         const m = url.match(rule.re);
         if (!m) continue;
@@ -232,11 +242,11 @@ function ghAccel(url) {
                 const u = r.u.replace(/\$(\d+)/g,(_,n)=>m[n]||'');
                 if (!isUrl(u)) continue;
                 new URL(u);
-                return u;
+                return { url: u, mirror: r.m || 'jsdelivr' }; // r.m identifies mirror type for stats
             } catch {}
         }
     }
-    return url;
+    return { url, mirror: null };
 }
 
 function storeAccel(url) {
@@ -282,7 +292,11 @@ function accelerateUrl(url, opts = {}) {
     // GitHub acceleration
     if (opts.gh !== false) {
         const gu = ghAccel(u);
-        if (gu !== u) { u = gu; flags.gh = true; }
+        if (gu.url !== u) {
+            u = gu.url;
+            flags.gh = true;
+            flags.ghMirror = gu.mirror; // pass mirror type up for stats (set in accelerateNode)
+        }
     }
 
     flags.tier = tier === TIER.COLD || tier === TIER.STALE ? 'cold' : 'warm';
@@ -492,7 +506,11 @@ function accelerateNode(el) {
         if (result.url !== primaryUrl && !result.flags.saved) {
             setResourceUrl(el, result.url);
             if (result.flags.cdn) stInc('cdn');
-            if (result.flags.gh) stInc('gh');
+            if (result.flags.gh) {
+                // Distinguish jsdelivr CDN (gh++) vs raw proxy (gh_m++)
+                if (result.flags.ghMirror === 'gh-proxy') stInc('gh_m');
+                else stInc('gh');
+            }
             if (result.flags.res || result.flags.cdn || result.flags.gh) stInc('res');
             count++;
         } else if (result.flags.saved) {
@@ -541,8 +559,9 @@ function scanExistingResources() {
 }
 
 function injectPreconnect() {
-    if (!document.head || document.head._wraPC) return;
-    document.head._wraPC = true;
+    const hd = document.head || document.documentElement;
+    if (!hd || _WRA_PC) return;
+    _WRA_PC = true;
     const df = document.createDocumentFragment();
     const domains = getEffectivePreconnectDomains();
     for (const o of domains) {
@@ -803,7 +822,7 @@ function showSettings() {
         <div class="wra-slide">
             <div class="wra-slide-t"><span class="wra-slide-en">Hover Delay</span><span class="wra-slide-zh">悬停延时</span></div>
             <div class="wra-slide-v"><span id="WRA_DV">${S.g('delay',65)}</span> ms</div>
-            <input type="range" id="WRA_DLY" min="15" max="300" value="${S.g('delay',65)}">
+            <input type="range" id="WRA_DLY" min="${C.minDelay}" max="300" value="${S.g('delay',65)}">
             <div class="wra-slide-h"><span class="wra-slide-hen">Lower = faster, higher = saves data</span><span class="wra-slide-hzh">越低触发越快，越高越省流量</span></div>
         </div>`;
 
@@ -845,19 +864,21 @@ function modal({title, html, ok='Confirm 确定', cancel, noCancel, footer, ms}=
         md.style.cssText = 'background:linear-gradient(160deg,#f7f3ec,#fdfaf5) !important;border-radius:12px !important;max-width:490px !important;width:92% !important;max-height:84vh !important;overflow-y:auto !important;box-shadow:0 8px 28px rgba(70,50,30,.08) !important;border:1px solid #e3dbcf !important;color:#3d352c !important;padding:20px 24px !important;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif !important;position:relative !important;opacity:1 !important';
         ov.style.cssText = 'position:fixed !important;inset:0 !important;background:rgba(70,50,30,.32) !important;backdrop-filter:blur(5px) !important;-webkit-backdrop-filter:blur(5px) !important;display:flex !important;align-items:center !important;justify-content:center !important;z-index:2147483647 !important;opacity:1 !important';
 
-        md.innerHTML = `<h3 class="wra-modal-title">${(title||'').replace(/\n/g,'<br>')}</h3>
-<div class="wra-modal-body">${html||''}</div>
-${footer ? `<div class="wra-modal-footer">${footer}</div>` : ''}
-<div class="wra-modal-actions">
-    ${noCancel ? '' : `<button data-a="cancel" class="wra-btn-cancel">${cancel||'Cancel 取消'}</button>`}
-    <button data-a="ok" class="wra-btn-ok">${ok}</button>
-</div>`;
-
         // Append to documentElement as fallback — some sites (bing desktop mode) have body issues
         const target = document.body || document.documentElement;
         if (!target) { res('dismiss'); return; }
         target.appendChild(ov);
         ov.appendChild(md);
+
+        // ── Safe modal — innerHTML with HTML-escaped hardcoded strings ──
+        const esc = s => String(s ?? '').replace(/&/g,'&').replace(/</g,'<').replace(/>/g,'>').replace(/"/g,'"');
+        md.innerHTML = `<h3 class="wra-modal-title">${esc(title).replace(/\n/g,'<br>')}</h3>
+<div class="wra-modal-body">${html || ''}</div>
+${footer ? `<div class="wra-modal-footer">${esc(footer)}</div>` : ''}
+<div class="wra-modal-actions">
+    ${noCancel ? '' : `<button data-a="cancel" class="wra-btn-cancel">${esc(cancel || 'Cancel 取消')}</button>`}
+    <button data-a="ok" class="wra-btn-ok">${esc(ok)}</button>
+</div>`;
 
         const cls = a => { try { ov.remove(); } catch {} res(a); };
         md.querySelector('[data-a="ok"]')?.addEventListener('click', () => cls('ok'));
@@ -1142,7 +1163,7 @@ function init() {
         try {
             if (!document.body) {
                 if (retries < 3) requestAnimationFrame(() => tryCreateEntry(retries + 1));
-                else setTimeout(() => tryCreateEntry(retries + 1), 200 * (retries - 1));
+                else setTimeout(() => tryCreateEntry(retries + 1), 100 * (1 << (retries - 3))); // exponential: 3→100ms, 4→200ms, 5→400ms
                 return;
             }
             let entryBtn = document.getElementById('wra-entry');
