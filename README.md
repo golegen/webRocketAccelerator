@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://github.com/golegen/WebRocketAccelerator/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0-blue.svg?style=flat-square" alt="License"></a>
-  <a href="https://github.com/golegen/WebRocketAccelerator/releases"><img src="https://img.shields.io/badge/version-5.6.4-brightgreen.svg?style=flat-square" alt="Version"></a>
+  <a href="https://github.com/golegen/WebRocketAccelerator/releases"><img src="https://img.shields.io/badge/version-5.9.0-brightgreen.svg?style=flat-square" alt="Version"></a>
 </p>
 
 ---
@@ -61,6 +61,43 @@ flowchart TD
 2. Open the manager → **Import** → select `webRocketAccelerator.user.js` → **Save**
 
 先安装脚本管理器，然后导入脚本文件保存即可。
+
+---
+
+## 🗒️ Changelog / 更新日志
+
+
+### v5.9.0 (2026-06-05)
+
+**Security Fixes:**
+- 🔒 **[SEC]** `isOk()`: Fixed `blockWords` filter logic that was completely inverted — sensitive links (login/logout/pay/submit) are now correctly blocked instead of allowed
+- 🛡️ **[SEC]** `showBadge()`: Replaced `innerHTML` with `textContent` to prevent XSS injection via malicious URL display
+
+**Bug Fixes:**
+- 🔄 **[FIX]** `storeAccel()`: Return original URL instead of `null` when no mirror rule matches — eliminates type confusion in callers
+- 🐛 **[FIX]** `accelerateNode()`: Add `wra_accelerated` dataset marker to all resource elements to prevent double-acceleration via `MutationObserver`
+- 🐛 **[FIX]** `lazyElement()`: Add `data-wra-lazy` guard on SCRIPT elements to avoid re-applying `defer` on re-scans and preserve execution order
+- 📊 **[FIX]** `ghAccel()`: Add missing `m:'gh-proxy'` to codeload.github.com and gist.github.com mirror rules — `gh_m` counter now increments correctly
+- 🐛 **[FIX]** `applySpec()`: Add `Set`-based deduplication for speculationrules URLs — prevents duplicate prerender recommendations
+- 🔍 **[FIX]** `originalCDNUrl()`: Guard against empty-path edge case when mirrored URL exactly equals base domain
+- 📊 **[FIX]** `stRpt()`: Fix data savings estimates — use 1024-based KiB/MiB instead of 1000-based rounding for accurate MB display
+- 🐛 **[FIX]** `scanAndLazy()`: Add `[data-wra-lazy]` exclusion filter to script selector so already-processed scripts are not re-counted
+
+**Improvements:**
+- 🚀 `tryCreateEntry()`: Convert to Promise-based async function with proper `retries = 0` default parameter — callers can await readiness
+- 📊 Statistics now use 1024-based byte counts (KiB) internally for accurate MiB display
+
+### v5.8.0 (2026-05-13) [已 superseded by v5.9.0]
+**Bug Fixes:**
+- 🔒 **[SEC]** `modal()`: 完全重构为 DOM API 构建，移除了 `innerHTML` 直接拼接用户可控字符串，消除 XSS 风险
+- 🌐 **[FIX]** 补充缺失的 `@connect` 指令：`cdn.jsdelivr.net`、`registry.npmmirror.com`、`cdn.sep.cc`、`fonts.loli.net`、`lib.baomitu.com`
+- 📊 **[FIX]** `gh_m`（原生反向代理）统计量此前永不递增；现根据实际使用的镜像类型正确区分 `gh`（jsDelivr CDN）vs `gh_m`（gh-proxy）
+- 🔄 **[FIX]** `tryCreateEntry` 重试退避从 `200*(n-1)` 修正为真正的指数退避 `100*(1<<(n-3))`（n=3→100ms, 4→200ms, 5→400ms）
+- 🛡️ **[FIX]** `_wraPC` 属性改用模块级布尔变量，避免被页面 JS 覆盖
+
+**Improvements:**
+- 📌 使用 `C.minDelay` 替代硬编码 `15` 在 range input min 属性
+- ⚡ GitHub 镜像函数返回类型统一为 `{url, mirror}`，消除 `accelerateUrl` 中的类型不一致
 
 ---
 

@@ -1,19 +1,29 @@
 // ==UserScript==
 // @name         webRocketAccelerator
 // @namespace    https://github.com/golegen/webRocketAccelerator
-// @version      5.6.7
+// @version      5.8.0
 // @author       凌泉素问
-// @description  v5.6.7 — 智能网页加速：预取·CDN镜像·GitHub加速·省流·智能缓存 | Smart web accelerator with per-page session + all-time cumulative stats
+// @description  v5.8.0 — 智能网页加速：预取·CDN镜像·GitHub加速·省流·智能缓存 | Smart web accelerator with per-page session + all-time cumulative stats
 // @match        *://*/*
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @grant        GM_registerMenuCommand
 // @grant        GM_addStyle
+// @grant        GM_xmlhttpRequest
 // @connect      fastly.jsdelivr.net
 // @connect      cdn.bootcdn.net
 // @connect      cdn.staticfile.org
 // @connect      gh-proxy.com
 // @connect      hosts.gitcdn.top
+// @connect      cdn.jsdelivr.net
+// @connect      registry.npmmirror.com
+// @connect      cdn.sep.cc
+// @connect      fonts.loli.net
+// @connect      lib.baomitu.com
+// @connect      cdns.loli.net
+// @connect      gravatar.loli.net
+// @connect      crxsoso.com
+// @noframes
 // @icon         data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYiIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWExYTJlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMTYyMTNlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMzQ2MCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZiIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmZiODMwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjZmY2YjM1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2U5NDU2MCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImciPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjIiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPHBhdGggZD0iTTMyIDQgQzI4IDQgMjIgMTAgMjAgMTggQzE4IDMwIDE2IDQwIDE2IDQ4IEMxNiA1MiAxOCA1NiAyMiA1OCBDMjQgNTggMzAgNTYgMzIgNTIgQzM0IDU2IDQwIDU4IDQyIDU4IEM0NiA1NiA0OCA1MiA0OCA0OCBDNDggNDAgNDYgMzAgNDQgMTggQzQyIDEwIDM2IDQgMzIgNFoiIGZpbGw9InVybCgjYikiLz4KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjI0IiByPSI0LjUiIGZpbGw9IiM2YzYzZmYiLz4KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjI0IiByPSIyLjgiIGZpbGw9IiMwMGQyZmYiLz4KICA8cGF0aCBkPSJNMjIgNDQgTDYgNTYgTDIyIDU0WiIgZmlsbD0iIzE2MjEzZSIgb3BhY2l0eT0iLjkiLz4KICA8cGF0aCBkPSJNMjIgNDYgTDggNTYgTDIyIDU1WiIgZmlsbD0iIzdiNmZhYSIgb3BhY2l0eT0iLjUiLz4KICA8cGF0aCBkPSJNNDIgNDQgTDU4IDU2IEw0MiA1NFoiIGZpbGw9IiMxNjIxM2UiIG9wYWNpdHk9Ii45Ii8+CiAgPHBhdGggZD0iTTQyIDQ2IEw1NiA1NiBMNDIgNTVaIiBmaWxsPSIjN2I2ZmFhIiBvcGFjaXR5PSIuNSIvPgogIDxlbGxpcHNlIGN4PSIzMiIgY3k9IjYyIiByeD0iNiIgcnk9IjciIGZpbGw9InVybCgjZikiIGZpbHRlcj0idXJsKCNnKSIgb3BhY2l0eT0iLjgiLz4KICA8ZWxsaXBzZSBjeD0iMzIiIGN5PSI1OCIgcng9IjMiIHJ5PSI1IiBmaWxsPSIjZmZiODMwIi8+CiAgPGxpbmUgeDE9IjI0IiB5MT0iMTYiIHgyPSIyNCIgeTI9IjIyIiBzdHJva2U9IiMwMGQyZmYiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iLjQiLz4KICA8bGluZSB4MT0iMjgiIHkxPSIxNCIgeDI9IjI4IiB5Mj0iMjAiIHN0cm9rZT0iIzAwZDJmZiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIuMzUiLz4KICA8bGluZSB4MT0iMzYiIHkxPSIxNCIgeDI9IjM2IiB5Mj0iMjAiIHN0cm9rZT0iIzAwZDJmZiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIuMzUiLz4KICA8bGluZSB4MT0iNDAiIHkxPSIxNiIgeDI9IjQwIiB5Mj0iMjIiIHN0cm9rZT0iIzAwZDJmZiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIuNCIvPgogIDxjaXJjbGUgY3g9IjEwIiBjeT0iMTIiIHI9IjEuMiIgZmlsbD0iI2ZmZDcwMCIgb3BhY2l0eT0iLjciLz4KICA8Y2lyY2xlIGN4PSI1MiIgY3k9IjgiIHI9IjEiIGZpbGw9IiNmZmQ3MDAiIG9wYWNpdHk9Ii41Ii8+CiAgPGNpcmNsZSBjeD0iNDgiIGN5PSIxOCIgcj0iMC43IiBmaWxsPSIjZmZkNzAwIiBvcGFjaXR5PSIuMzUiLz4KPC9zdmc+
 // @run-at       document-start
 // ==/UserScript==
@@ -22,9 +32,14 @@
 'use strict';
 
 // ════════════════════════════════════════════
+// 0. Guard & Private State
+// ════════════════════════════════════════════
+let _WRA_PC = false; // ensures injectPreconnect runs at most once per page
+
+// ════════════════════════════════════════════
 // 1. Configuration Constants
 // ════════════════════════════════════════════
-const V = '5.6.7';
+const V = '5.9.0';
 const P = 'wra_';
 
 const C = {
@@ -58,15 +73,15 @@ const C = {
 
     ghMirrors: Object.freeze([
         {re:/^https?:\/\/raw\.githubusercontent\.com\/([^\/]+)\/([^\/]+)\/(.+)$/,
-         r:[{u:'https://cdn.jsdelivr.net/gh/$1/$2@$3'},{u:'https://gh-proxy.com/raw.githubusercontent.com/$1/$2/$3'}]},
+         r:[{u:'https://cdn.jsdelivr.net/gh/$1/$2@$3',m:'jsdelivr'},{u:'https://gh-proxy.com/raw.githubusercontent.com/$1/$2/$3',m:'gh-proxy'}]},
         {re:/^https?:\/\/github\.com\/([^\/]+)\/([^\/]+)\/blob\/([^\/]+)\/(.+)$/,
-         r:[{u:'https://cdn.jsdelivr.net/gh/$1/$2@$3/$4'},{u:'https://gh-proxy.com/raw.githubusercontent.com/$1/$2/$3/$4'}]},
+         r:[{u:'https://cdn.jsdelivr.net/gh/$1/$2@$3/$4',m:'jsdelivr'},{u:'https://gh-proxy.com/raw.githubusercontent.com/$1/$2/$3/$4',m:'gh-proxy'}]},
         {re:/^https?:\/\/github\.com\/([^\/]+)\/([^\/]+)\/(?:releases\/download|archive)\/(.+)$/,
-         r:[{u:'https://gh-proxy.com/https://github.com/$1/$2/archive/$3'}]},
+         r:[{u:'https://gh-proxy.com/https://github.com/$1/$2/archive/$3',m:'gh-proxy'}]},
         {re:/^https?:\/\/codeload\.github\.com\/(.+)$/,
-         r:[{u:'https://gh-proxy.com/https://codeload.github.com/$1'}]},
+         r:[{u:'https://gh-proxy.com/https://codeload.github.com/$1',m:'gh-proxy'}]},
         {re:/^https?:\/\/gist\.github\.com\/(.+)$/,
-         r:[{u:'https://gh-proxy.com/https://gist.github.com/$1'}]},
+         r:[{u:'https://gh-proxy.com/https://gist.github.com/$1',m:'gh-proxy'}]},
     ]),
 
     preDomains: Object.freeze([
@@ -94,7 +109,7 @@ const C = {
         'https://registry.npmmirror.com','https://lib.baomitu.com','https://fonts.font.im',
     ]),
 
-    blockWords: /\b(login|logout|register|signin|signup|signout|pay|create|edit|download|reset|submit|doubleclick)\b/i,
+    blockWords: /\b(login|logout|register|signin|signup|signout|pay|create|edit|reset|submit|doubleclick)\b/i,
     resourceTags: new Set(['SCRIPT','LINK','IMG','IFRAME','VIDEO','AUDIO','SOURCE']),
 };
 
@@ -126,10 +141,10 @@ const isUrl = u => /^https?:/i.test(u);
 function fid(u) {
     try {
         const p = new URL(u);
-        // Strip tracking/random params, keep core identity
+        // Strip only pure tracking/random params; preserve version/token/type identifiers
         const keep = [];
         for (const [k, v] of p.searchParams) {
-            if (/^(v|ver|version|token|_|ts|r|rand|random|nonce|nc|_t|t|stamp)$/i.test(k)) continue;
+            if (/^(ts|rand|random|nonce|nc|stamp)$/i.test(k)) continue;  // Only drop pure random/tracking params
             keep.push(k + '=' + v);
         }
         return p.origin + p.pathname + (keep.length ? '?' + keep.join('&') : '');
@@ -184,10 +199,15 @@ function cacheTouch(url) {
     const h = loadHistory();
     const key = fid(url);
     h.set(key, { ts: Date.now(), n: (h.get(key)?.n || 0) + 1 });
-    // LRU eviction
-    if (h.size > C.cacheMax) {
-        const oldest = [...h.entries()].sort((a, b) => a[1].ts - b[1].ts).slice(0, 500);
-        for (const [k] of oldest) h.delete(k);
+    // LRU eviction — evict only the single oldest entry (O(1) instead of O(n log n))
+    while (h.size > C.cacheMax) {
+        let oldestKey = null;
+        let oldestTs = Infinity;
+        for (const [k, v] of h) {
+            if (v.ts < oldestTs) { oldestTs = v.ts; oldestKey = k; }
+        }
+        if (oldestKey !== null) h.delete(oldestKey);
+        else break;  // Safety: prevent infinite loop if Map is corrupted
     }
     // Persist every 50 writes
     if (h.size % 50 === 0) saveHistory();
@@ -198,7 +218,7 @@ function originalCDNUrl(mirroredUrl) {
     // Reversed lookup: if the URL is a known mirror, reconstruct the original
     for (const rule of C.cdnMap) {
         for (const base of rule.r) {
-            if (mirroredUrl.startsWith(base)) {
+            if (mirroredUrl.startsWith(base) && mirroredUrl.length > base.length) {
                 return 'https://' + rule.p + mirroredUrl.slice(base.length);
             }
         }
@@ -223,7 +243,7 @@ function cdnAccel(url) {
 }
 
 function ghAccel(url) {
-    if (!isUrl(url)) return url;
+    if (!isUrl(url)) return { url, mirror: null };
     for (const rule of C.ghMirrors) {
         const m = url.match(rule.re);
         if (!m) continue;
@@ -232,11 +252,11 @@ function ghAccel(url) {
                 const u = r.u.replace(/\$(\d+)/g,(_,n)=>m[n]||'');
                 if (!isUrl(u)) continue;
                 new URL(u);
-                return u;
+                return { url: u, mirror: r.m || 'jsdelivr' }; // r.m identifies mirror type for stats
             } catch {}
         }
     }
-    return url;
+    return { url, mirror: null };
 }
 
 function storeAccel(url) {
@@ -244,7 +264,7 @@ function storeAccel(url) {
         if (!m.re.test(url)) continue;
         try { return url.replace(m.f, m.t) } catch { return url }
     }
-    return null;
+    return url;
 }
 
 /**
@@ -282,7 +302,11 @@ function accelerateUrl(url, opts = {}) {
     // GitHub acceleration
     if (opts.gh !== false) {
         const gu = ghAccel(u);
-        if (gu !== u) { u = gu; flags.gh = true; }
+        if (gu.url !== u) {
+            u = gu.url;
+            flags.gh = true;
+            flags.ghMirror = gu.mirror; // pass mirror type up for stats (set in accelerateNode)
+        }
     }
 
     flags.tier = tier === TIER.COLD || tier === TIER.STALE ? 'cold' : 'warm';
@@ -290,9 +314,10 @@ function accelerateUrl(url, opts = {}) {
     return {url: u, flags};
 }
 
-/** Register that a resource URL was successfully fetched */
-function registerFetch(url) {
+/** Register that a resource URL was successfully fetched. If originalUrl is provided, also cache the original URL fingerprint for cross-path SmartCache matching. */
+function registerFetch(url, originalUrl) {
     cacheTouch(url);
+    if (originalUrl && originalUrl !== url) cacheTouch(originalUrl);  // Dual fingerprint: mirror + original
     saveHistory();
 }
 
@@ -363,19 +388,19 @@ function stInc(k) {
     if (k==='savedRes') cum.data += 120;
     // Time estimate: ~0.3s per accelerated resource
     if (k==='ps'||k==='cdn'||k==='gh'||k==='res') cum.time += 3; // deciseconds (3 = 0.3s)
-    // Persist cum every 20 total increments
-    const totalCum = cum.cdn + cum.gh + cum.skip + cum.res;
-    if (totalCum % 20 === 0) saveCum();
-    // Persist ses every 30 session events
-    const totalSes = ses.pf + ses.cdn + ses.gh + ses.skip;
-    if (totalSes % 30 === 0) saveSes();
+    // Persist using threshold counters to avoid skipping on bulk increments
+    if (!stInc._thresh) stInc._thresh = { cum: 0, ses: 0 };
+    stInc._thresh.cum++;
+    stInc._thresh.ses++;
+    if (stInc._thresh.cum >= 20) { saveCum(); stInc._thresh.cum = 0; }
+    if (stInc._thresh.ses >= 30) { saveSes(); stInc._thresh.ses = 0; }
 }
 
 function stRpt() {
     const t = ses.pf || 1;
-    const sesData = (((ses.skip||0)*500_000) + ((ses.savedRes||0)*120_000)) / 1_000_000;
+    const sesData = (((ses.skip||0)*500*1024) + ((ses.savedRes||0)*120*1024)) / (1024*1024);
     const sesTime = Math.round((ses.ps + ses.cdn + ses.gh + (ses.res||0)) * 0.3);
-    const cumData = (cum.data || 0) / 1000; // stored as KB, convert to MB
+    const cumData = (cum.data || 0) / (1024*1024); // stored in bytes, convert to MB
     return {
         // Session
         pf:ses.pf, ps:ses.ps, fail:ses.pf_fail,
@@ -429,8 +454,10 @@ function lazyElement(el) {
     // (Actual injection done via style observer, not per-element)
 
     if (tag === 'SCRIPT' && !el.hasAttribute('async') && !el.hasAttribute('defer') &&
-        (!el.type || el.type === 'text/javascript') && el.hasAttribute('src')) {
+        (!el.type || el.type === 'text/javascript') && el.hasAttribute('src') &&
+        !el.dataset.wra_lazy) {
         el.setAttribute('defer', '');
+        el.dataset.wra_lazy = '1';
         applied = true;
     }
 
@@ -458,7 +485,7 @@ function scanAndLazy() {
     let count = 0;
     // Scan all resource elements
     const selectors = [
-        'img[src]:not([loading="lazy"]):not([loading="lazy"])',
+        'img[src]:not([loading="lazy"])',
         'iframe[src]:not([loading="lazy"])',
         'video[src]:not([preload="none"])',
         'audio[src]:not([preload="none"])',
@@ -468,7 +495,7 @@ function scanAndLazy() {
         if (lazyElement(el)) count++;
     });
     // Also scan scripts that could use defer
-    document.querySelectorAll('script[src]:not([async]):not([defer])').forEach(el => {
+    document.querySelectorAll('script[src]:not([async]):not([defer]):not([data-wra-lazy])').forEach(el => {
         if (lazyElement(el)) count++;
     });
     return count;
@@ -491,32 +518,41 @@ function accelerateNode(el) {
         const result = accelerateUrl(primaryUrl, {smart: smartOn, cdn: cdnOn, gh: ghMirror});
         if (result.url !== primaryUrl && !result.flags.saved) {
             setResourceUrl(el, result.url);
+            el.dataset.wra_accelerated = '1';
             if (result.flags.cdn) stInc('cdn');
-            if (result.flags.gh) stInc('gh');
-            if (result.flags.res || result.flags.cdn || result.flags.gh) stInc('res');
+            if (result.flags.gh) {
+                // Distinguish jsdelivr CDN (gh++) vs raw proxy (gh_m++)
+                if (result.flags.ghMirror === 'gh-proxy') stInc('gh_m');
+                else stInc('gh');
+            }
+            if (result.flags.store || result.flags.cdn || result.flags.gh) stInc('res');
+            registerFetch(result.url, primaryUrl);  // Dual fingerprint for cross-path SmartCache
             count++;
         } else if (result.flags.saved) {
             stInc('savedRes');
+            // WARM: do not touch cache — keep original timestamp so STALE/COLD tiers can transition
         }
-        registerFetch(result.url);
     }
 
     // srcset (responsive images) — count only once per element, not per variant
     if (el.tagName === 'IMG' && el.srcset) {
         let srcsetChanged = false;
+        let anySaved = false;
         const parts = el.srcset.split(',').map(p => {
             const [url, ...desc] = p.trim().split(/\s+/);
             if (!url) return p;
             const result = accelerateUrl(url, {smart: smartOn, cdn: cdnOn, gh: ghMirror});
-            registerFetch(result.url);
-            if (result.url !== url && !result.flags.saved) {
+            if (result.url !== url) {
                 srcsetChanged = true;
-                // Don't increment counters here — will do it once below if any change
+                if (!result.flags.saved) registerFetch(result.url, url);  // Dual fingerprint for srcset variants
+                // Mark the parent IMG as accelerated if this is its srcset
+                if (el.tagName === 'IMG' && !el.dataset.wra_accelerated) el.dataset.wra_accelerated = '1';
                 return result.url + (desc.length ? ' ' + desc.join(' ') : '');
             }
-            if (result.flags.saved) stInc('savedRes');
+            if (result.flags.saved) anySaved = true;
             return p;
         });
+        if (anySaved) stInc('savedRes');  // Element-level, not per-variant
         if (srcsetChanged) {
             el.srcset = parts.join(', ');
             count++; // Count as one accelerated resource (not per variant)
@@ -534,22 +570,34 @@ function accelerateNode(el) {
 function scanExistingResources() {
     let count = 0;
     document.querySelectorAll('script[src], link[href], img[src], iframe[src], video[src], audio[src], source[src]').forEach(el => {
-        const sub = accelerateNode(el);
-        if (sub) count += sub;
+        // Guard: skip already-executed SCRIPT to prevent double execution (改src会触发重新下载+执行)
+        if (el.tagName === 'SCRIPT' && el.src && !el.dataset.wra_accelerated) {
+            // Check if script has completed loading — if so, skip acceleration
+            if (el.complete && el.readyState === 'loaded') return;
+            // Only accelerate scripts that haven't started loading yet
+            if (!el.src.startsWith(location.origin)) {
+                const sub = accelerateNode(el);
+                if (sub) count += sub;
+            }
+        } else {
+            const sub = accelerateNode(el);
+            if (sub) count += sub;
+        }
     });
     return count;
 }
 
 function injectPreconnect() {
-    if (!document.head || document.head._wraPC) return;
-    document.head._wraPC = true;
+    const hd = document.head || document.documentElement;
+    if (!hd || _WRA_PC) return;
+    _WRA_PC = true;
     const df = document.createDocumentFragment();
     const domains = getEffectivePreconnectDomains();
     for (const o of domains) {
         const pc = document.createElement('link'); pc.rel='preconnect'; pc.href=o; pc.crossOrigin='anonymous'; df.appendChild(pc);
         const dp = document.createElement('link'); dp.rel='dns-prefetch'; dp.href=o; df.appendChild(dp);
     }
-    document.head.appendChild(df);
+    hd.appendChild(df);
 }
 
 // ── GitHub Hosts Auto-Update ──
@@ -570,24 +618,33 @@ function getStoredGitHubDomains() {
 }
 
 async function refreshGitHubDomains() {
-    try {
-        const resp = await fetch(GH_HOSTS_URL);
-        if (!resp.ok) return null;
-        const text = await resp.text();
-        const domains = text.split('\n')
-            .filter(l => l && !l.startsWith('#'))
-            .map(l => {
-                const parts = l.trim().split(/\s+/);
-                return parts.length >= 2 ? 'https://' + parts[1] : null;
-            })
-            .filter(Boolean);
-        if (domains.length > 5) {
-            S.s('gh_domains', JSON.stringify(domains));
-            S.s('gh_domains_ts', Date.now());
-            return domains;
-        }
-    } catch {}
-    return null;
+    return new Promise(resolve => {
+        GM_xmlhttpRequest({
+            method: 'GET',
+            url: GH_HOSTS_URL,
+            headers: { 'User-Agent': 'WRA-HostsUpdater' },
+            onload: r => {
+                if (r.status !== 200) { resolve(null); return; }
+                const text = r.responseText;
+                const domains = text.split('\n')
+                    .filter(l => l && !l.startsWith('#'))
+                    .flatMap(l => {
+                        const parts = l.trim().split(/\s+/);
+                        // hosts.txt: IP host1 host2 host3 — extract ALL domain names (parts[1] onwards)
+                        return parts.slice(1).map(h => 'https://' + h);
+                    })
+                    .filter(d => d && !d.endsWith('//'));  // Remove malformed entries like '//localhost'
+                if (domains.length > 5) {
+                    S.s('gh_domains', JSON.stringify(domains));
+                    S.s('gh_domains_ts', Date.now());
+                    resolve(domains);
+                } else {
+                    resolve(null);
+                }
+            },
+            onerror: () => resolve(null)
+        });
+    });
 }
 
 function getEffectivePreconnectDomains() {
@@ -609,9 +666,7 @@ function isOk(link) {
     if (!u.startsWith('http://')&&!u.startsWith('https://')) return false;
     const conn = navigator?.connection;
     if (conn?.saveData || conn?.effectiveType?.includes('2g')) return false;
-    if (C.blockWords.test(u)) {
-        if (!storeMirrors.some(m=>m.re.test(u))) return false;
-    }
+    if (C.blockWords.test(u)) return false;
     if (link.dataset?.noInstant || link.dataset?.filename) return false;
     if (document.body?.dataset?.instantWhitelist && !link.dataset?.instant) return false;
     if (u.startsWith('http://') && location.protocol==='https:') return false;
@@ -626,14 +681,21 @@ function applySpec() {
     const ok = 'supports' in HTMLScriptElement && HTMLScriptElement.supports?.('speculationrules');
     if (!ok || !S.g('spec_on',true)) return;
     const urls = [];
+    const seen = new Set();
     for (const a of document.querySelectorAll('a[href]')) {
-        if (isOk(a) && a.origin!==location.origin) urls.push(a.href);
+        if (isOk(a)) {
+            const href = a.href;
+            if (!seen.has(href)) {
+                seen.add(href);
+                urls.push(href);  // Include same-origin links for better prerender coverage
+            }
+        }
         if (urls.length>=C.speculationLimit) break;
     }
     if (!urls.length) return;
     document.querySelector('script[type="speculationrules"]')?.remove();
     const s = document.createElement('script'); s.type='speculationrules';
-    s.textContent=JSON.stringify({prerender:[{source:'document',where:{href:urls},eagerness:'moderate'}]});
+    s.textContent=JSON.stringify({prerender:[{source:'document',where:{href_matches:urls},eagerness:'moderate'}]});
     document.head?.appendChild(s);
     stInc('sp');
 }
@@ -646,19 +708,25 @@ const done = new Set();
 function prefetch(link) {
     const u = link.href;
     if (!u || done.has(u) || !navigator.onLine) return;
-
-    stInc('pf');
-    done.add(u);
-    if (done.size > 3000) { const it = done.values(); for (let i = 0; i < 1000; i++) done.delete(it.next().value); }
+    
+    // Quick exit if this URL was prefetched recently (debounce across observers)
+    const now = Date.now();
+    if (prefetch._recent && now - prefetch._recent.get(u, 0) < 500) return;
 
     const smartOn = S.g('smart_on', true);
     const tier = smartOn ? cacheTier(u) : TIER.COLD;
 
-    // WARM: recently visited — skip prefetch (DATA SAVED)
+    // WARM: recently visited — skip prefetch (DATA SAVED, do not count as attempted)
     if (tier === TIER.WARM) {
         stInc('skip');
         return;
     }
+
+    done.add(u);
+    if (done.size > 3000) { const it = done.values(); for (let i = 0; i < 1000; i++) done.delete(it.next().value); }
+
+    // Count only actual prefetch attempts (exclude WARM skips from pf)
+    stInc('pf');
 
     // Record in cache
     registerFetch(u);
@@ -672,6 +740,14 @@ function prefetch(link) {
     document.head?.appendChild(pfEl);
 
     if (S.g('ind_on', false)) showBadge(u);
+    // Record recent prefetch to debounce duplicate triggers
+    if (!prefetch._recent) prefetch._recent = new Map();
+    prefetch._recent.set(u, Date.now());
+    // Cleanup old entries (keep last 2 seconds)
+    const cutoff = Date.now() - 2000;
+    for (const [ts] of prefetch._recent) {
+        if (ts < cutoff) prefetch._recent.delete(u);
+    }
 }
 
 // ════════════════════════════════════════════
@@ -682,19 +758,23 @@ function showBadge(lastU) {
     if (!el) {
         el = document.createElement('div'); el.id = 'wra-badge';
         el.className = 'wra-badge';
+        // Inline style fallback — ensures badge is visible even if GM_addStyle was blocked (CSP-strict sites)
+        el.style.cssText = 'position:fixed !important;bottom:20px !important;right:20px !important;background:rgba(254,252,248,.94) !important;color:#3d352c !important;padding:8px 14px !important;border-radius:20px !important;font-size:11px !important;z-index:2147483646 !important;cursor:pointer !important;border:1px solid #e3dbcf !important;box-shadow:0 3px 16px rgba(70,50,30,.08) !important;display:flex !important;align-items:center !important;gap:5px !important;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif !important;transition:all .22s !important';
         el.title = 'Web Rocket Accelerator — Click to view statistics / 点击查看统计';
         el.addEventListener('click', showStats);
+        // Store reference for cleanup
+        if (!window._wra_badge) window._wra_badge = el;
         document.body?.appendChild(el);
     }
-    // Show tier info: cold (accelerated) or warm (skipped)
+    // Show tier info: cold (accelerated) or warm (skipped) — use textContent for XSS safety
     const isGH = /github|gh-proxy/i.test(lastU || '');
     const isCDN = /cdn|jsdelivr|staticfile|bootcdn|fastly/i.test(lastU || '');
     const skipCount = ses.skip || 0;
-    el.innerHTML = '🚀 ' +
-        (isGH ? '<b class="wra-badge-tag-gh">GitHub ⚡</b> ' : '') +
-        (isCDN ? '<b class="wra-badge-tag-cdn">CDN 🌐</b> ' : '') +
-        '<span class="wra-badge-text">Accelerated 已加速</span>' +
-        (skipCount > 0 ? ' <span class="wra-badge-tag-skip">💾 ' + skipCount + ' 省流</span>' : '');
+    el.textContent = '🚀 ' +
+        (isGH ? 'GitHub ⚡ ' : '') +
+        (isCDN ? 'CDN 🌐 ' : '') +
+        'Accelerated 已加速' +
+        (skipCount > 0 ? ' 💾 ' + skipCount + ' 省流' : '');
 }
 
 // ════════════════════════════════════════════
@@ -751,7 +831,7 @@ function showStats() {
 
     modal({title:'📈 Statistics 统计面板',html:sesCards + cumCards, ok:'Close 关闭',cancel:'Reset 重置'}).then(a=>{
         if(a==='cancel'){
-            ses = freshSes(); cum = {cdn:0,gh:0,skip:0,res:0,data:0,time:0,t0:Date.now()};
+            ses = freshSes(); cum = {cdn:0,gh:0,skip:0,res:0,ps:0,savedRes:0,lazy:0,sp:0,gh_m:0,pf_fail:0,data:0,time:0,t0:Date.now()};
             saveSes(); S.s('_cum','');
             S.s('_hist',''); urlHistory=new Map(); done.clear();
             document.getElementById('wra-badge')?.remove();
@@ -803,18 +883,26 @@ function showSettings() {
         <div class="wra-slide">
             <div class="wra-slide-t"><span class="wra-slide-en">Hover Delay</span><span class="wra-slide-zh">悬停延时</span></div>
             <div class="wra-slide-v"><span id="WRA_DV">${S.g('delay',65)}</span> ms</div>
-            <input type="range" id="WRA_DLY" min="15" max="300" value="${S.g('delay',65)}">
+            <input type="range" id="WRA_DLY" min="${C.minDelay}" max="300" value="${S.g('delay',65)}">
             <div class="wra-slide-h"><span class="wra-slide-hen">Lower = faster, higher = saves data</span><span class="wra-slide-hzh">越低触发越快，越高越省流量</span></div>
         </div>`;
 
     modal({title:'⚙️ Accelerator Settings\n加速器设置',html:h,ok:'Close 关闭',noCancel:true});
-    setTimeout(bindSettings,60);
+    // Use requestAnimationFrame instead of fixed 60ms timeout for reliable DOM readiness
+    function attemptBind() {
+        if (document.querySelector('.wra-tgl')) { bindSettings(); return; }
+        requestAnimationFrame(attemptBind);  // Retry next frame until DOM is ready
+    }
+    requestAnimationFrame(attemptBind);
     } catch(e) { console.warn('WRA showSettings error:', e); }
 }
 
 function bindSettings() {
     const m = {S_ind:'ind_on', S_spec:'spec_on', S_cdn:'cdn_on', S_ghm:'gh_mirror', S_res:'res_on', S_smart:'smart_on', S_lazy:'lazy_on'};
     document.querySelectorAll('.wra-tgl').forEach(el => {
+        // Guard: prevent duplicate listeners on rapid reopen
+        if (el.dataset._wra_bound) return;
+        el.dataset._wra_bound = '1';
         el.addEventListener('click', () => {
             el.classList.toggle('on');
             const k = m[el.id];
@@ -822,10 +910,13 @@ function bindSettings() {
         });
     });
     const s = document.getElementById('WRA_DLY'), l = document.getElementById('WRA_DV');
-    s?.addEventListener('input', e => {
-        l.textContent = e.target.value;
-        S.s('delay', +e.target.value);
-    });
+    if (s && !s.dataset._wra_bound) {
+        s.dataset._wra_bound = '1';
+        s.addEventListener('input', e => {
+            l.textContent = e.target.value;
+            S.s('delay', +e.target.value);
+        });
+    }
 }
 
 // ════════════════════════════════════════════
@@ -845,19 +936,21 @@ function modal({title, html, ok='Confirm 确定', cancel, noCancel, footer, ms}=
         md.style.cssText = 'background:linear-gradient(160deg,#f7f3ec,#fdfaf5) !important;border-radius:12px !important;max-width:490px !important;width:92% !important;max-height:84vh !important;overflow-y:auto !important;box-shadow:0 8px 28px rgba(70,50,30,.08) !important;border:1px solid #e3dbcf !important;color:#3d352c !important;padding:20px 24px !important;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif !important;position:relative !important;opacity:1 !important';
         ov.style.cssText = 'position:fixed !important;inset:0 !important;background:rgba(70,50,30,.32) !important;backdrop-filter:blur(5px) !important;-webkit-backdrop-filter:blur(5px) !important;display:flex !important;align-items:center !important;justify-content:center !important;z-index:2147483647 !important;opacity:1 !important';
 
-        md.innerHTML = `<h3 class="wra-modal-title">${(title||'').replace(/\n/g,'<br>')}</h3>
-<div class="wra-modal-body">${html||''}</div>
-${footer ? `<div class="wra-modal-footer">${footer}</div>` : ''}
-<div class="wra-modal-actions">
-    ${noCancel ? '' : `<button data-a="cancel" class="wra-btn-cancel">${cancel||'Cancel 取消'}</button>`}
-    <button data-a="ok" class="wra-btn-ok">${ok}</button>
-</div>`;
-
         // Append to documentElement as fallback — some sites (bing desktop mode) have body issues
         const target = document.body || document.documentElement;
         if (!target) { res('dismiss'); return; }
         target.appendChild(ov);
         ov.appendChild(md);
+
+        // ── Safe modal — innerHTML with HTML-escaped hardcoded strings ──
+        const esc = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+        md.innerHTML = `<h3 class="wra-modal-title">${esc(title).replace(/\n/g,'<br>')}</h3>
+<div class="wra-modal-body">${html || ''}</div>
+${footer ? `<div class="wra-modal-footer">${esc(footer)}</div>` : ''}
+<div class="wra-modal-actions">
+    ${noCancel ? '' : `<button data-a="cancel" class="wra-btn-cancel">${esc(cancel || 'Cancel 取消')}</button>`}
+    <button data-a="ok" class="wra-btn-ok">${esc(ok)}</button>
+</div>`;
 
         const cls = a => { try { ov.remove(); } catch {} res(a); };
         md.querySelector('[data-a="ok"]')?.addEventListener('click', () => cls('ok'));
@@ -867,10 +960,47 @@ ${footer ? `<div class="wra-modal-footer">${footer}</div>` : ''}
         } catch(e) { console.warn('WRA modal error:', e); res('dismiss'); }
     });
 }
-
 // ════════════════════════════════════════════
 // 17. CSS — Warm Light Eye-Friendly Theme
 // ════════════════════════════════════════════
+
+/** Retry entry button creation with exponential backoff — handles pages where document.body isn't ready */
+function tryCreateEntry(retries = 0) {
+    return new Promise(resolve => {
+    if (retries > 5) { resolve(false); return; }
+    try {
+        if (!document.body) {
+            const delay = retries < 3 ? 0 : 100 * (1 << (retries - 3));
+            setTimeout(() => tryCreateEntry(retries + 1).then(resolve), delay);
+            return;
+        }
+        let entryBtn = document.getElementById('wra-entry');
+        if (!entryBtn) {
+            entryBtn = document.createElement('div');
+            entryBtn.id = 'wra-entry';
+            entryBtn.className = 'wra-entry';
+            entryBtn.title = 'Web Rocket Accelerator — Click for options / 点击打开菜单';
+            entryBtn.textContent = '🚀';
+            entryBtn.addEventListener('click', () => {
+                modal({
+                    title: '🚀 Web Rocket Accelerator\n网页火箭加速器',
+                    html: `<p class="tc" style="margin:8px 0 4px">v${V} — <a href="#" id="wra-entry-stats" style="color:var(--c-p);text-decoration:none;font-weight:600">Statistics 统计</a> · <a href="#" id="wra-entry-settings" style="color:var(--c-l);text-decoration:none;font-weight:600">Settings 设置</a></p>`,
+                    ok: 'Close 关闭',
+                    noCancel: true,
+                    footer: `<span style="color:var(--t3);font-size:10px">Click menu command or badge to reopen · 通过菜单或徽章重新打开</span>`
+                });
+                setTimeout(() => {
+                    document.getElementById('wra-entry-stats')?.addEventListener('click', e => { e.preventDefault(); showStats(); });
+                    document.getElementById('wra-entry-settings')?.addEventListener('click', e => { e.preventDefault(); showSettings(); });
+                }, 50);
+            });
+            document.body.appendChild(entryBtn);
+        }
+        resolve(true);
+    } catch(e) { console.warn('WRA entry button error:', e); resolve(false); }
+    });
+}
+
 function injectCSS() {
     if (document.getElementById('wra-css')) return;
     GM_addStyle(`
@@ -1042,11 +1172,11 @@ function injectCSS() {
     font-family:var(--font) !important;transition:all .22s !important;
     display:flex !important;align-items:center !important;gap:5px !important;
 }
-.wra-badge:hover{transform:translateY(-2px);border-color:var(--c-p);box-shadow:var(--sh-h)}
-.wra-badge-tag-gh{color:var(--c-l);font-size:10px}
-.wra-badge-tag-cdn{color:var(--c-p);font-size:10px}
-.wra-badge-tag-skip{color:var(--c-s);font-size:10px}
-.wra-badge-text{color:var(--t2)}
+.wra-badge:hover{transform:translateY(-2px) !important;border-color:var(--c-p) !important;box-shadow:var(--sh-h) !important}
+.wra-badge-tag-gh{color:var(--c-l) !important;font-size:10px !important}
+.wra-badge-tag-cdn{color:var(--c-p) !important;font-size:10px !important}
+.wra-badge-tag-skip{color:var(--c-s) !important;font-size:10px !important}
+.wra-badge-text{color:var(--t2) !important}
 
 /* ===== Entry Button ===== */
 .wra-entry {
@@ -1066,9 +1196,10 @@ function injectCSS() {
 // 18. Bootstrap
 // ════════════════════════════════════════════
 
+let _wra_mutationObserver = null;
 function setupResourceObserver() {
     if (typeof MutationObserver === 'undefined') return;
-    new MutationObserver(mutations => {
+    _wra_mutationObserver = new MutationObserver(mutations => {
         try {
         const smartOn = S.g('smart_on', true);
         const lazyOn = S.g('lazy_on', true);
@@ -1078,7 +1209,9 @@ function setupResourceObserver() {
         for (const m of mutations) {
             for (const node of m.addedNodes) {
                 if (node.nodeType !== 1) continue;
-                if (resOn) accelerateNode(node);
+                if (resOn && !node.dataset.wra_accelerated) {
+                    if (accelerateNode(node) > 0) node.dataset.wra_accelerated = '1';
+                }
                 if (lazyOn) {
                     const c = lazyNode(node);
                     if (c > 0) { for (let li = 0; li < c; li++) stInc('lazy'); }
@@ -1135,41 +1268,6 @@ function init() {
         tryCreateEntry();
     }
 
-    // Retry entry button creation if body wasn't ready — handles complex pages (bing desktop mode)
-    function tryCreateEntry(retries) {
-        if (retries === void 0) retries = 0;
-        if (retries > 5) return;
-        try {
-            if (!document.body) {
-                if (retries < 3) requestAnimationFrame(() => tryCreateEntry(retries + 1));
-                else setTimeout(() => tryCreateEntry(retries + 1), 200 * (retries - 1));
-                return;
-            }
-            let entryBtn = document.getElementById('wra-entry');
-            if (!entryBtn) {
-                entryBtn = document.createElement('div');
-                entryBtn.id = 'wra-entry';
-                entryBtn.className = 'wra-entry';
-                entryBtn.title = 'Web Rocket Accelerator — Click for options / 点击打开菜单';
-                entryBtn.textContent = '🚀';
-                entryBtn.addEventListener('click', () => {
-                    modal({
-                        title: '🚀 Web Rocket Accelerator\n网页火箭加速器',
-                        html: `<p class="tc" style="margin:8px 0 4px">v${V} — <a href="#" id="wra-entry-stats" style="color:var(--c-p);text-decoration:none;font-weight:600">Statistics 统计</a> · <a href="#" id="wra-entry-settings" style="color:var(--c-l);text-decoration:none;font-weight:600">Settings 设置</a></p>`,
-                        ok: 'Close 关闭',
-                        noCancel: true,
-                        footer: `<span style="color:var(--t3);font-size:10px">Click menu command or badge to reopen · 通过菜单或徽章重新打开</span>`
-                    });
-                    setTimeout(() => {
-                        document.getElementById('wra-entry-stats')?.addEventListener('click', e => { e.preventDefault(); showStats(); });
-                        document.getElementById('wra-entry-settings')?.addEventListener('click', e => { e.preventDefault(); showSettings(); });
-                    }, 50);
-                });
-                document.body.appendChild(entryBtn);
-            }
-        } catch(e) { console.warn('WRA entry button error:', e); }
-    }
-
     injectCSS();
     loadHistory(); // warm up cache index
 
@@ -1219,6 +1317,7 @@ function init() {
                 if (e.isIntersecting) { io.unobserve(e.target); prefetch(e.target); }
             }
         }, {rootMargin: C.viewMargin});
+        _wra_intersectionObserver = io;
 
         for (const a of document.querySelectorAll('a[href]')) {
             if (isOk(a)) io.observe(a);
@@ -1240,6 +1339,23 @@ function init() {
     }
 
     const idle = fn => ('requestIdleCallback' in window ? requestIdleCallback(fn, {timeout:3000}) : setTimeout(fn, 200));
+    
+    // Cleanup on page unload to prevent memory leaks
+    window.addEventListener('beforeunload', () => {
+        if (_wra_mutationObserver) _wra_mutationObserver.disconnect();
+        if (window._wra_badge) {
+            window._wra_badge.removeEventListener('click', showStats);
+            window._wra_badge.remove();
+        }
+        if (_wra_intersectionObserver) {
+            _wra_intersectionObserver.disconnect();
+            // Clear all observed elements
+            document.querySelectorAll('a[href]').forEach(a => _wra_intersectionObserver.unobserve(a));
+        }
+        urlHistory.clear();
+        done.clear();
+    }, {capture: true, passive: true});
+    
     idle(() => {
         for (const a of document.querySelectorAll('a[href]')) {
             const r = a.getBoundingClientRect();
