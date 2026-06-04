@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         webRocketAccelerator
 // @namespace    https://github.com/golegen/webRocketAccelerator
-// @version      5.8.0
+// @version      5.9.0
 // @author       凌泉素问
 // @description  v5.8.0 — 智能网页加速：预取·CDN镜像·GitHub加速·省流·智能缓存 | Smart web accelerator with per-page session + all-time cumulative stats
 // @match        *://*/*
