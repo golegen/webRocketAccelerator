@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://github.com/golegen/WebRocketAccelerator/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0-blue.svg?style=flat-square" alt="License"></a>
-  <a href="https://github.com/golegen/WebRocketAccelerator/releases"><img src="https://img.shields.io/badge/version-5.9.0-brightgreen.svg?style=flat-square" alt="Version"></a>
+  <a href="https://github.com/golegen/WebRocketAccelerator/releases"><img src="https://img.shields.io/badge/version-5.10.0-brightgreen.svg?style=flat-square" alt="Version"></a>
 </p>
 
 ---
@@ -67,7 +67,27 @@ flowchart TD
 ## 🗒️ Changelog / 更新日志
 
 
-### v5.9.0 (2026-06-05)
+### v5.10.0 (2026-06-05)
+
+**Bug Fixes:**
+- 🔄 **[FIX]** `prefetch._recent` Map cleanup: Fixed wrong destructuring `[ts]` → `[keyUrl, ts]`, preventing memory leak and wrong entry deletion
+- 🐛 **[FIX]** `scanAndLazy`: Removed invalid `preload="none"` check from `<source>` selector — `<source>` elements have no preload attribute
+- 🌐 **[FIX]** `applySpec`: Corrected SpeculationRules API usage — `href_matches` → `url_matches` for valid prerender rules
+
+**Improvements:**
+- 🛡️ **[IMP]** Added error boundary (try-catch) to IntersectionObserver callback — observer now survives exceptions
+- ⚡ **[IMP]** Optimized idle-time viewport scan — removed forced layout via `getBoundingClientRect`, now only runs as fallback when IO unavailable
+- 🧹 **[IMP]** Removed redundant `unobserve` loop after `disconnect()` in beforeunload cleanup
+
+**Security:**
+- 🔒 **[SEC]** Added missing `@connect` directives: `cdnjs.loli.net`, `fonts.font.im` — ensures CDN mirror requests don't silently fail
+- 🔒 **[SEC]** `modal()`: Replaced innerHTML string interpolation with Safe DOM API (`textContent`) for all user-controlled strings — eliminates potential XSS via title/cancel/footer injection
+
+**Bug Fixes:**
+- 📊 **[FIX]** `loadCum()` / reset: Added missing `pf:0` field to cumulative stats — fixes `NaN` propagation in all-time "Attempts" counter from first prefetch onward
+- 💾 **[FIX]** `prefetch`: Clarified comment — WARM resources correctly skip `registerFetch` (early-return before cache write), preventing permanent WARM lock
+
+### v5.9.0 (2026-06-05) [已 superseded by v5.10.0]
 
 **Security Fixes:**
 - 🔒 **[SEC]** `isOk()`: Fixed `blockWords` filter logic that was completely inverted — sensitive links (login/logout/pay/submit) are now correctly blocked instead of allowed

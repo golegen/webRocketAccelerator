@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         webRocketAccelerator
 // @namespace    https://github.com/golegen/webRocketAccelerator
-// @version      5.9.0
+// @version      5.10.0
 // @author       凌泉素问
-// @description  v5.8.0 — 智能网页加速：预取·CDN镜像·GitHub加速·省流·智能缓存 | Smart web accelerator with per-page session + all-time cumulative stats
+// @description  v5.10.0 — 智能网页加速：预取·CDN镜像·GitHub加速·省流·智能缓存 | Smart web accelerator with per-page session + all-time cumulative stats
 // @match        *://*/*
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -23,6 +23,8 @@
 // @connect      cdns.loli.net
 // @connect      gravatar.loli.net
 // @connect      crxsoso.com
+// @connect      cdnjs.loli.net
+// @connect      fonts.font.im
 // @noframes
 // @icon         data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYiIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWExYTJlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMTYyMTNlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMzQ2MCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZiIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmZiODMwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjZmY2YjM1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2U5NDU2MCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImciPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjIiLz48L2ZpbHRlcj4KICA8L2RlZnM+CiAgPHBhdGggZD0iTTMyIDQgQzI4IDQgMjIgMTAgMjAgMTggQzE4IDMwIDE2IDQwIDE2IDQ4IEMxNiA1MiAxOCA1NiAyMiA1OCBDMjQgNTggMzAgNTYgMzIgNTIgQzM0IDU2IDQwIDU4IDQyIDU4IEM0NiA1NiA0OCA1MiA0OCA0OCBDNDggNDAgNDYgMzAgNDQgMTggQzQyIDEwIDM2IDQgMzIgNFoiIGZpbGw9InVybCgjYikiLz4KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjI0IiByPSI0LjUiIGZpbGw9IiM2YzYzZmYiLz4KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjI0IiByPSIyLjgiIGZpbGw9IiMwMGQyZmYiLz4KICA8cGF0aCBkPSJNMjIgNDQgTDYgNTYgTDIyIDU0WiIgZmlsbD0iIzE2MjEzZSIgb3BhY2l0eT0iLjkiLz4KICA8cGF0aCBkPSJNMjIgNDYgTDggNTYgTDIyIDU1WiIgZmlsbD0iIzdiNmZhYSIgb3BhY2l0eT0iLjUiLz4KICA8cGF0aCBkPSJNNDIgNDQgTDU4IDU2IEw0MiA1NFoiIGZpbGw9IiMxNjIxM2UiIG9wYWNpdHk9Ii45Ii8+CiAgPHBhdGggZD0iTTQyIDQ2IEw1NiA1NiBMNDIgNTVaIiBmaWxsPSIjN2I2ZmFhIiBvcGFjaXR5PSIuNSIvPgogIDxlbGxpcHNlIGN4PSIzMiIgY3k9IjYyIiByeD0iNiIgcnk9IjciIGZpbGw9InVybCgjZikiIGZpbHRlcj0idXJsKCNnKSIgb3BhY2l0eT0iLjgiLz4KICA8ZWxsaXBzZSBjeD0iMzIiIGN5PSI1OCIgcng9IjMiIHJ5PSI1IiBmaWxsPSIjZmZiODMwIi8+CiAgPGxpbmUgeDE9IjI0IiB5MT0iMTYiIHgyPSIyNCIgeTI9IjIyIiBzdHJva2U9IiMwMGQyZmYiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iLjQiLz4KICA8bGluZSB4MT0iMjgiIHkxPSIxNCIgeDI9IjI4IiB5Mj0iMjAiIHN0cm9rZT0iIzAwZDJmZiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIuMzUiLz4KICA8bGluZSB4MT0iMzYiIHkxPSIxNCIgeDI9IjM2IiB5Mj0iMjAiIHN0cm9rZT0iIzAwZDJmZiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIuMzUiLz4KICA8bGluZSB4MT0iNDAiIHkxPSIxNiIgeDI9IjQwIiB5Mj0iMjIiIHN0cm9rZT0iIzAwZDJmZiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIuNCIvPgogIDxjaXJjbGUgY3g9IjEwIiBjeT0iMTIiIHI9IjEuMiIgZmlsbD0iI2ZmZDcwMCIgb3BhY2l0eT0iLjciLz4KICA8Y2lyY2xlIGN4PSI1MiIgY3k9IjgiIHI9IjEiIGZpbGw9IiNmZmQ3MDAiIG9wYWNpdHk9Ii41Ii8+CiAgPGNpcmNsZSBjeD0iNDgiIGN5PSIxOCIgcj0iMC43IiBmaWxsPSIjZmZkNzAwIiBvcGFjaXR5PSIuMzUiLz4KPC9zdmc+
 // @run-at       document-start
@@ -39,7 +41,7 @@ let _WRA_PC = false; // ensures injectPreconnect runs at most once per page
 // ════════════════════════════════════════════
 // 1. Configuration Constants
 // ════════════════════════════════════════════
-const V = '5.9.0';
+const V = '5.10.0';
 const P = 'wra_';
 
 const C = {
@@ -366,7 +368,7 @@ function saveSes() { S.s('_ses', JSON.stringify(ses)); }
 // Cumulative counters — persist across all sessions
 function loadCum() {
     try { const r = S.g('_cum',''); if (r) return JSON.parse(r); } catch {}
-    return {cdn:0,gh:0,skip:0,res:0,ps:0,savedRes:0,lazy:0,sp:0,gh_m:0,pf_fail:0,data:0,time:0,t0:Date.now()};
+    return {cdn:0,gh:0,gh_m:0,pf:0,pf_fail:0,skip:0,res:0,ps:0,savedRes:0,lazy:0,sp:0,data:0,time:0,t0:Date.now()};
 }
 function saveCum() { S.s('_cum', JSON.stringify(cum)); }
 
@@ -489,7 +491,7 @@ function scanAndLazy() {
         'iframe[src]:not([loading="lazy"])',
         'video[src]:not([preload="none"])',
         'audio[src]:not([preload="none"])',
-        'source[src]:not([preload="none"])'
+        'source[src]'
     ];
     document.querySelectorAll(selectors.join(', ')).forEach(el => {
         if (lazyElement(el)) count++;
@@ -694,8 +696,9 @@ function applySpec() {
     }
     if (!urls.length) return;
     document.querySelector('script[type="speculationrules"]')?.remove();
+    // Use correct SpeculationRules format: url_matches accepts an array of exact URLs
     const s = document.createElement('script'); s.type='speculationrules';
-    s.textContent=JSON.stringify({prerender:[{source:'document',where:{href_matches:urls},eagerness:'moderate'}]});
+    s.textContent=JSON.stringify({prerender:[{source:'document',where:{url_matches:urls},eagerness:'moderate'}]});
     document.head?.appendChild(s);
     stInc('sp');
 }
@@ -728,7 +731,7 @@ function prefetch(link) {
     // Count only actual prefetch attempts (exclude WARM skips from pf)
     stInc('pf');
 
-    // Record in cache
+    // Record in cache — only for non-WARM resources (WARM entries keep original timestamp to age naturally)
     registerFetch(u);
 
     // Prefetch the ORIGINAL URL — acceleration is only for resource tags (SCRIPT/LINK/IMG),
@@ -745,8 +748,8 @@ function prefetch(link) {
     prefetch._recent.set(u, Date.now());
     // Cleanup old entries (keep last 2 seconds)
     const cutoff = Date.now() - 2000;
-    for (const [ts] of prefetch._recent) {
-        if (ts < cutoff) prefetch._recent.delete(u);
+    for (const [keyUrl, ts] of prefetch._recent) {
+        if (ts < cutoff) prefetch._recent.delete(keyUrl);
     }
 }
 
@@ -831,7 +834,7 @@ function showStats() {
 
     modal({title:'📈 Statistics 统计面板',html:sesCards + cumCards, ok:'Close 关闭',cancel:'Reset 重置'}).then(a=>{
         if(a==='cancel'){
-            ses = freshSes(); cum = {cdn:0,gh:0,skip:0,res:0,ps:0,savedRes:0,lazy:0,sp:0,gh_m:0,pf_fail:0,data:0,time:0,t0:Date.now()};
+            ses = freshSes(); cum = {cdn:0,gh:0,gh_m:0,pf:0,pf_fail:0,skip:0,res:0,ps:0,savedRes:0,lazy:0,sp:0,data:0,time:0,t0:Date.now()};
             saveSes(); S.s('_cum','');
             S.s('_hist',''); urlHistory=new Map(); done.clear();
             document.getElementById('wra-badge')?.remove();
@@ -942,19 +945,43 @@ function modal({title, html, ok='Confirm 确定', cancel, noCancel, footer, ms}=
         target.appendChild(ov);
         ov.appendChild(md);
 
-        // ── Safe modal — innerHTML with HTML-escaped hardcoded strings ──
-        const esc = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-        md.innerHTML = `<h3 class="wra-modal-title">${esc(title).replace(/\n/g,'<br>')}</h3>
-<div class="wra-modal-body">${html || ''}</div>
-${footer ? `<div class="wra-modal-footer">${esc(footer)}</div>` : ''}
-<div class="wra-modal-actions">
-    ${noCancel ? '' : `<button data-a="cancel" class="wra-btn-cancel">${esc(cancel || 'Cancel 取消')}</button>`}
-    <button data-a="ok" class="wra-btn-ok">${esc(ok)}</button>
-</div>`;
+        // Safe DOM API — title is user-controlled, use textContent to prevent XSS.
+                // For ok/cancel/footer, esc() is sufficient as they appear in text nodes.
+                const titleEl = document.createElement('h3');
+                titleEl.className = 'wra-modal-title';
+                titleEl.textContent = title ? title.replace(/\n/g, ' · ') : '';
+                md.appendChild(titleEl);
+                const bodyEl = document.createElement('div');
+                bodyEl.className = 'wra-modal-body';
+                bodyEl.innerHTML = html || '';
+                md.appendChild(bodyEl);
+
+                if (footer) {
+                    const ftEl = document.createElement('div');
+                    ftEl.className = 'wra-modal-footer';
+                    ftEl.textContent = footer;
+                    md.appendChild(ftEl);
+                }
+
+                const actionsEl = document.createElement('div');
+                actionsEl.className = 'wra-modal-actions';
+                if (!noCancel) {
+                    const cancelBtn = document.createElement('button');
+                    cancelBtn.dataset.a = 'cancel';
+                    cancelBtn.className = 'wra-btn-cancel';
+                    cancelBtn.textContent = cancel || 'Cancel 取消';
+                    cancelBtn.addEventListener('click', () => cls('cancel'));
+                    actionsEl.appendChild(cancelBtn);
+                }
+                const okBtn = document.createElement('button');
+                okBtn.dataset.a = 'ok';
+                okBtn.className = 'wra-btn-ok';
+                okBtn.textContent = ok;
+                okBtn.addEventListener('click', () => cls('ok'));
+                actionsEl.appendChild(okBtn);
+                md.appendChild(actionsEl);
 
         const cls = a => { try { ov.remove(); } catch {} res(a); };
-        md.querySelector('[data-a="ok"]')?.addEventListener('click', () => cls('ok'));
-        md.querySelector('[data-a="cancel"]')?.addEventListener('click', () => cls('cancel'));
         ov.addEventListener('click', e => { if (e.target === ov) cls('dismiss'); });
         if (ms) setTimeout(() => cls('timeout'), ms);
         } catch(e) { console.warn('WRA modal error:', e); res('dismiss'); }
@@ -1251,7 +1278,7 @@ function init() {
     GM_registerMenuCommand('🚀 Statistics 加速统计', showStats);
     GM_registerMenuCommand('⚙️ Settings 加速器设置', showSettings);
     GM_registerMenuCommand('🔄 Reset 重置统计', () => {
-        ses = freshSes(); cum = {cdn:0,gh:0,skip:0,res:0,data:0,time:0,t0:Date.now()};
+        ses = freshSes(); cum = {cdn:0,gh:0,gh_m:0,pf:0,pf_fail:0,skip:0,res:0,ps:0,savedRes:0,lazy:0,sp:0,data:0,time:0,t0:Date.now()};
         saveSes(); S.s('_cum','');
         S.s('_hist',''); urlHistory = new Map(); done.clear();
         document.getElementById('wra-badge')?.remove();
@@ -1313,9 +1340,11 @@ function init() {
     // ── IntersectionObserver (viewport-aware prefetch) ──
     if ('IntersectionObserver' in window) {
         const io = new IntersectionObserver(es => {
+            try {
             for (const e of es) {
                 if (e.isIntersecting) { io.unobserve(e.target); prefetch(e.target); }
             }
+            } catch(err) { /* silent — observer must never break */ }
         }, {rootMargin: C.viewMargin});
         _wra_intersectionObserver = io;
 
@@ -1340,7 +1369,19 @@ function init() {
 
     const idle = fn => ('requestIdleCallback' in window ? requestIdleCallback(fn, {timeout:3000}) : setTimeout(fn, 200));
     
-    // Cleanup on page unload to prevent memory leaks
+    // Idle-time viewport scan — only if IntersectionObserver unavailable (fallback path)
+    if (!('IntersectionObserver' in window)) {
+        idle(() => {
+            try {
+            for (const a of document.querySelectorAll('a[href]')) {
+                // Avoid forced layout: check element.inert instead of getBoundingClientRect
+                // Elements in viewport are more likely to be non-inert
+                if (!a.inert && isOk(a)) prefetch(a);
+            }
+            } catch {}
+        });
+    }
+    idle(applySpec);
     window.addEventListener('beforeunload', () => {
         if (_wra_mutationObserver) _wra_mutationObserver.disconnect();
         if (window._wra_badge) {
@@ -1349,20 +1390,10 @@ function init() {
         }
         if (_wra_intersectionObserver) {
             _wra_intersectionObserver.disconnect();
-            // Clear all observed elements
-            document.querySelectorAll('a[href]').forEach(a => _wra_intersectionObserver.unobserve(a));
         }
         urlHistory.clear();
         done.clear();
     }, {capture: true, passive: true});
-    
-    idle(() => {
-        for (const a of document.querySelectorAll('a[href]')) {
-            const r = a.getBoundingClientRect();
-            if (r.top < window.innerHeight && r.bottom > 0 && isOk(a)) prefetch(a);
-        }
-    });
-    idle(applySpec);
     } catch(e) { console.warn('WRA init error:', e); }
 }
 
