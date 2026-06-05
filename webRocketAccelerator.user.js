@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         webRocketAccelerator
 // @namespace    https://github.com/golegen/webRocketAccelerator
-// @version      5.10.0
+// @version      5.10.1
 // @author       凌泉素问
-// @description  v5.10.0 — 智能网页加速：预取·CDN镜像·GitHub加速·省流·智能缓存 | Smart web accelerator with per-page session + all-time cumulative stats
+// @description  v5.10.1 — 智能网页加速：预取·CDN镜像·GitHub加速·省流·智能缓存 | Smart web accelerator with per-page session + all-time cumulative stats
 // @match        *://*/*
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -41,7 +41,7 @@ let _WRA_PC = false; // ensures injectPreconnect runs at most once per page
 // ════════════════════════════════════════════
 // 1. Configuration Constants
 // ════════════════════════════════════════════
-const V = '5.10.0';
+const V = '5.10.1';
 const P = 'wra_';
 
 const C = {

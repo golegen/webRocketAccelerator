@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://github.com/golegen/WebRocketAccelerator/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0-blue.svg?style=flat-square" alt="License"></a>
-  <a href="https://github.com/golegen/WebRocketAccelerator/releases"><img src="https://img.shields.io/badge/version-5.10.0-brightgreen.svg?style=flat-square" alt="Version"></a>
+  <a href="https://github.com/golegen/WebRocketAccelerator/releases"><img src="https://img.shields.io/badge/version-5.10.1-brightgreen.svg?style=flat-square" alt="Version"></a>
 </p>
 
 ---
@@ -67,27 +67,25 @@ flowchart TD
 ## 🗒️ Changelog / 更新日志
 
 
-### v5.10.0 (2026-06-05)
+### v5.10.1 (2026-06-05)
+
+**Security:**
+- 🔒 **[SEC]** `modal()`: Replaced innerHTML string interpolation with Safe DOM API (`textContent`) for title/cancel/footer/ok — eliminates XSS vector for all user-controlled strings
+- 🔒 **[SEC]** Added missing `@connect` directives: `cdnjs.loli.net`, `fonts.font.im` — ensures CDN mirror requests don't silently fail
 
 **Bug Fixes:**
+- 📊 **[FIX]** `loadCum()` / reset sites: Added missing `pf:0` field to cumulative stats — fixes `NaN` propagation in all-time "Attempts" counter from first prefetch onward
 - 🔄 **[FIX]** `prefetch._recent` Map cleanup: Fixed wrong destructuring `[ts]` → `[keyUrl, ts]`, preventing memory leak and wrong entry deletion
 - 🐛 **[FIX]** `scanAndLazy`: Removed invalid `preload="none"` check from `<source>` selector — `<source>` elements have no preload attribute
-- 🌐 **[FIX]** `applySpec`: Corrected SpeculationRules API usage — `href_matches` → `url_matches` for valid prerender rules
+- 🌐 **[FIX]** `applySpec`: Corrected SpeculationRules API — `href_matches` → `url_matches` for valid prerender rules
+- 💾 **[FIX]** `prefetch`: WARM resources correctly skip `registerFetch` (early-return before cache write), preventing permanent WARM lock
 
 **Improvements:**
 - 🛡️ **[IMP]** Added error boundary (try-catch) to IntersectionObserver callback — observer now survives exceptions
 - ⚡ **[IMP]** Optimized idle-time viewport scan — removed forced layout via `getBoundingClientRect`, now only runs as fallback when IO unavailable
 - 🧹 **[IMP]** Removed redundant `unobserve` loop after `disconnect()` in beforeunload cleanup
 
-**Security:**
-- 🔒 **[SEC]** Added missing `@connect` directives: `cdnjs.loli.net`, `fonts.font.im` — ensures CDN mirror requests don't silently fail
-- 🔒 **[SEC]** `modal()`: Replaced innerHTML string interpolation with Safe DOM API (`textContent`) for all user-controlled strings — eliminates potential XSS via title/cancel/footer injection
-
-**Bug Fixes:**
-- 📊 **[FIX]** `loadCum()` / reset: Added missing `pf:0` field to cumulative stats — fixes `NaN` propagation in all-time "Attempts" counter from first prefetch onward
-- 💾 **[FIX]** `prefetch`: Clarified comment — WARM resources correctly skip `registerFetch` (early-return before cache write), preventing permanent WARM lock
-
-### v5.9.0 (2026-06-05) [已 superseded by v5.10.0]
+### v5.10.0 (2026-06-05) [已 superseded by v5.10.1]
 
 **Security Fixes:**
 - 🔒 **[SEC]** `isOk()`: Fixed `blockWords` filter logic that was completely inverted — sensitive links (login/logout/pay/submit) are now correctly blocked instead of allowed
@@ -107,19 +105,7 @@ flowchart TD
 - 🚀 `tryCreateEntry()`: Convert to Promise-based async function with proper `retries = 0` default parameter — callers can await readiness
 - 📊 Statistics now use 1024-based byte counts (KiB) internally for accurate MiB display
 
-### v5.8.0 (2026-05-13) [已 superseded by v5.9.0]
-**Bug Fixes:**
-- 🔒 **[SEC]** `modal()`: 完全重构为 DOM API 构建，移除了 `innerHTML` 直接拼接用户可控字符串，消除 XSS 风险
-- 🌐 **[FIX]** 补充缺失的 `@connect` 指令：`cdn.jsdelivr.net`、`registry.npmmirror.com`、`cdn.sep.cc`、`fonts.loli.net`、`lib.baomitu.com`
-- 📊 **[FIX]** `gh_m`（原生反向代理）统计量此前永不递增；现根据实际使用的镜像类型正确区分 `gh`（jsDelivr CDN）vs `gh_m`（gh-proxy）
-- 🔄 **[FIX]** `tryCreateEntry` 重试退避从 `200*(n-1)` 修正为真正的指数退避 `100*(1<<(n-3))`（n=3→100ms, 4→200ms, 5→400ms）
-- 🛡️ **[FIX]** `_wraPC` 属性改用模块级布尔变量，避免被页面 JS 覆盖
-
-**Improvements:**
-- 📌 使用 `C.minDelay` 替代硬编码 `15` 在 range input min 属性
-- ⚡ GitHub 镜像函数返回类型统一为 `{url, mirror}`，消除 `accelerateUrl` 中的类型不一致
-
----
+### v5.9.0 (2026-06-05) [已 superseded by v5.10.1]
 
 ## 📄 License / 许可证
 
