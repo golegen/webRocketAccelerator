@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         webRocketAccelerator
 // @namespace    https://github.com/golegen/webRocketAccelerator
-// @version      5.10.1
+// @version      5.10.2
 // @author       凌泉素问
-// @description  v5.10.1 — 智能网页加速：预取·CDN镜像·GitHub加速·省流·智能缓存 | Smart web accelerator with per-page session + all-time cumulative stats
+// @description  v5.10.2 — 智能网页加速：预取·CDN镜像·GitHub加速·省流·智能缓存 | Smart web accelerator with per-page session + all-time cumulative stats
 // @match        *://*/*
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -41,7 +41,7 @@ let _WRA_PC = false; // ensures injectPreconnect runs at most once per page
 // ════════════════════════════════════════════
 // 1. Configuration Constants
 // ════════════════════════════════════════════
-const V = '5.10.1';
+const V = '5.10.2';
 const P = 'wra_';
 
 const C = {
@@ -953,7 +953,14 @@ function modal({title, html, ok='Confirm 确定', cancel, noCancel, footer, ms}=
                 md.appendChild(titleEl);
                 const bodyEl = document.createElement('div');
                 bodyEl.className = 'wra-modal-body';
-                bodyEl.innerHTML = html || '';
+                // Defensive sanitization: only allow safe HTML for modal content
+                // All html content is internally generated, but this prevents future XSS if refactored
+                const sanitizeHtml = (str) => {
+                    if (!str) return '';
+                    return str.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+                              .replace(/javascript:/gi, '');
+                };
+                bodyEl.innerHTML = sanitizeHtml(html);
                 md.appendChild(bodyEl);
 
                 if (footer) {

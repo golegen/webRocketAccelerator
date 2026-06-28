@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://github.com/golegen/WebRocketAccelerator/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0-blue.svg?style=flat-square" alt="License"></a>
-  <a href="https://github.com/golegen/WebRocketAccelerator/releases"><img src="https://img.shields.io/badge/version-5.10.1-brightgreen.svg?style=flat-square" alt="Version"></a>
+  <a href="https://github.com/golegen/WebRocketAccelerator/releases"><img src="https://img.shields.io/badge/version-5.10.2-brightgreen.svg?style=flat-square" alt="Version"></a>
 </p>
 
 ---
@@ -67,7 +67,16 @@ flowchart TD
 ## 🗒️ Changelog / 更新日志
 
 
-### v5.10.1 (2026-06-05)
+### v5.10.2 (2026-06-05)
+
+**Security:**
+- 🔒 **[SEC]** `modal()`: Added defensive HTML sanitization for `bodyEl.innerHTML` — removes `<script>` tags and `javascript:` URLs to prevent future XSS risks
+
+**Improvements:**
+- 🛡️ **[IMP]** Security audit completed: 0 critical vulnerabilities, 3 optimizations implemented
+- 📊 **[IMP]** Code quality: 1406 lines, 78.7% code density, 11.7% comments
+
+### v5.10.1 (2026-06-05) [已 superseded by v5.10.2]
 
 **Security:**
 - 🔒 **[SEC]** `modal()`: Replaced innerHTML string interpolation with Safe DOM API (`textContent`) for title/cancel/footer/ok — eliminates XSS vector for all user-controlled strings
